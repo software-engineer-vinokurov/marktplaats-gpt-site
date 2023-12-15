@@ -14,16 +14,17 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have the 'marktplaats-gpt-site' title`, () => {
+  it(`should have the 'Negotiate Ninja, your Marktplaats Conversations GPT Assistant' title`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('marktplaats-gpt-site');
+    expect(app.title).toEqual('Negotiate Ninja, your Marktplaats Conversations GPT Assistant');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, marktplaats-gpt-site');
+    expect(compiled.querySelector('h1')?.textContent).toContain('Negotiate Ninja');
+    expect(compiled.querySelector('h1')?.textContent).toContain('Marktplaats Conversations GPT Assistant');
   });
 });

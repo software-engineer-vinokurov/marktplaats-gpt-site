@@ -10,5 +10,5 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'marktplaats-gpt-site';
+  title = 'Negotiate Ninja, your Marktplaats Conversations GPT Assistant';
 }
