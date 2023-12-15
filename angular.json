@@ -94,7 +94,9 @@
         },
         "deploy": {
           "builder": "angular-cli-ghpages:deploy",
-          "options": {}
+          "options": {
+            "cname": "negotiate.ninja"
+          }
         }
       }
     }
