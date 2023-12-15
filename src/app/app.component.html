@@ -1,4 +1,18 @@
-<div>
-  <h1>Hello, {{ title }}</h1>
-  <p>Congratulations! Your app is running. 🎉</p>
-</div>
+<mat-toolbar>
+  <button mat-icon-button class="icon" aria-label="icon-button with menu icon">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>Negotiate Ninja</span>
+  <span class="toolbar-spacer"></span>
+  <button mat-icon-button class="icon favorite-icon" aria-label="icon-button with heart icon">
+    <mat-icon>favorite</mat-icon>
+  </button>
+  <button mat-icon-button class="icon" aria-label="icon-button with share icon">
+    <mat-icon>share</mat-icon>
+  </button>
+</mat-toolbar>
+<main>
+  <section class="content">
+    <app-landing-page></app-landing-page>
+  </section>
+</main>

@@ -1,0 +1,51 @@
+.brang-logo {
+  width: 40%;
+}
+
+.brang-logo-content {
+  display: flex;
+  justify-content: center;
+  /* Aligns image horizontally */
+  align-items: center;
+  /* Aligns image vertically if the container has a specified height */
+}
+
+.landing-page-content {
+  padding-left: 20%;
+  padding-right: 20%;
+  border: solid 1px var(--debug-color);
+  border-radius: 0px;
+}
+
+.landing-page-content>p {
+  font-size: 130%;
+  line-height: 2;
+}
+
+@media (min-width: 1199px) and (max-width: 1600px) {
+  .brang-logo {
+    width: 80%;
+  }
+}
+
+@media (min-width: 500px) and (max-width: 1200px) {
+  .brang-logo {
+    width: 70%;
+  }
+
+  .landing-page-content {
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+}
+
+@media (max-width: 499px) {
+  .brang-logo {
+    width: 100%;
+  }
+
+  .landing-page-content {
+    padding-left: 0%;
+    padding-right: 0%;
+  }
+}

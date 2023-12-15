@@ -1,0 +1,10 @@
+section.content {
+  border: solid 1px var(--debug-color);
+  border-radius: 0px;
+
+  padding: 10px;
+}
+
+.toolbar-spacer {
+  flex: 1 1 auto;
+}
