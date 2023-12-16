@@ -3,8 +3,10 @@ import { SuggestionsService } from '../suggestions.service';
 import { MatCardModule } from '@angular/material/card';
 import { CommonModule } from '@angular/common';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import { deepCopy } from '../../utils';
+import { MatButtonModule } from '@angular/material/button';
 
 
 interface UserPreferences {
@@ -16,8 +18,10 @@ interface UserPreferences {
   standalone: true,
   imports: [
     CommonModule,
+    MatButtonModule,
     MatCardModule,
     FormsModule,
+    MatInputModule,
   ],
   templateUrl: './settings.component.html',
   styleUrl: './settings.component.css'

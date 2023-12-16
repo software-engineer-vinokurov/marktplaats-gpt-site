@@ -26,6 +26,7 @@ section.content {
 
 .toolbar-user-name {
   visibility: visible;
+  font-size: 80%;
 }
 
 @media (max-width: 499px) {

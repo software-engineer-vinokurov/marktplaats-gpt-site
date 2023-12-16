@@ -8,24 +8,31 @@
 // Be sure that you only ever include this mixin once!
 @include mat.core();
 
+$my-typography: mat.define-typography-config($font-family: "Roboto",
+  );
+
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$marktplaats-gpt-site-primary: mat.define-palette(mat.$indigo-palette);
-$marktplaats-gpt-site-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+$site-primary: mat.define-palette(mat.$indigo-palette);
+$site-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
 
 // The warn palette is optional (defaults to red).
-$marktplaats-gpt-site-warn: mat.define-palette(mat.$red-palette);
+$site-warn: mat.define-palette(mat.$red-palette);
 
 // Create the theme object. A theme consists of configurations for individual
 // theming systems such as "color" or "typography".
-$marktplaats-gpt-site-theme: mat.define-light-theme((color: (primary: $marktplaats-gpt-site-primary,
-        accent: $marktplaats-gpt-site-accent,
-        warn: $marktplaats-gpt-site-warn,
-      )));
+$site-theme: mat.define-light-theme((color: (primary: $site-primary,
+        accent: $site-accent,
+        warn: $site-warn,
+      ),
+      // Only include `typography` and `density` in the default dark theme.
+      typography: $my-typography,
+      density: 0,
+    ));
 
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
-@include mat.all-component-themes($marktplaats-gpt-site-theme);
+@include mat.all-component-themes($site-theme);

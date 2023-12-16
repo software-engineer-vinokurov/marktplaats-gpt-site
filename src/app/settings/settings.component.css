@@ -4,5 +4,8 @@
 
 .settings-card-content-big textarea {
   width: 100%;
-  height: 100px;
+}
+
+.settings-card-full-width {
+  width: 100%;
 }
