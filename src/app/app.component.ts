@@ -28,12 +28,31 @@ import { SuggestionsService } from './suggestions.service';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
+  private intervalId: any;
+
   // Inject the authentication service into your component through the constructor
   constructor(@Inject(DOCUMENT) private doc: Document, public auth: AuthService, private suggestionsService: SuggestionsService,
   ) {
     auth.isAuthenticated$.subscribe(v => {
       // this.showAbout = !v
     });
+  }
+
+  showSignup = true;
+  showLogin = false;
+
+  ngOnInit(): void {
+    this.intervalId = setInterval(() => {
+      // switching Sign-up and Log-in buttons every 2 sec, as they both do not fitt in phone's screen vertical
+      this.showSignup = !this.showSignup;
+      this.showLogin = !this.showLogin;
+    }, 1983);
+  }
+
+  ngOnDestroy(): void {
+    if (this.intervalId) {
+      clearInterval(this.intervalId);
+    }
   }
 
   onLogin(): void {

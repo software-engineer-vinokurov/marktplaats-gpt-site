@@ -39,17 +39,18 @@
   </div>
   <span class="toolbar-spacer"></span>
   <div *ngIf="!(auth.isAuthenticated$ | async)">
-    <button mat-fab extended aria-label="icon-button with login icon" (click)="onLogin()">
-      <mat-icon>check</mat-icon>
-      Sign-up
-    </button>
-  </div>
-  <span class=" toolbar-spacer"></span>
-  <div *ngIf="!(auth.isAuthenticated$ | async)">
-    <button mat-fab extended aria-label="icon-button with login icon" color="primary" (click)="onLogin()">
-      <mat-icon>login</mat-icon>
-      Log-in
-    </button>
+    <div *ngIf="showSignup">
+      <button mat-fab extended aria-label="icon-button with login icon" (click)="onLogin()">
+        <mat-icon>check</mat-icon>
+        Sign-up
+      </button>
+    </div>
+    <div *ngIf="showLogin">
+      <button mat-fab extended aria-label="icon-button with login icon" color="primary" (click)="onLogin()">
+        <mat-icon>login</mat-icon>
+        Log-in
+      </button>
+    </div>
   </div>
   <div class="toolbar-user-name">
     <div *ngIf="auth.user$ | async as user">
