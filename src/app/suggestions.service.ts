@@ -3,6 +3,10 @@ import { Injectable } from '@angular/core';
 import { AuthService } from '@auth0/auth0-angular';
 
 
+export interface SetUserPreferencesRequest {
+  suggestions_context?: string;
+}
+
 export interface UserPreferencesResponse {
   user_preferences: {
     suggestions_context?: string;
@@ -31,6 +35,18 @@ export class SuggestionsService {
 
   getUserPreferences() {
     return this.http.get<UserPreferencesResponse>(`${this.apiServer}/user-preferences`, {
+      observe: 'response',
+      headers: {
+        Authorization: 'Bearer ' + this.token,
+      }
+    });
+  }
+
+  saveUserPreferences(user_preferences: {
+    suggestions_context?: string;
+  }) {
+    const payload: SetUserPreferencesRequest = user_preferences;
+    return this.http.post<UserPreferencesResponse>(`${this.apiServer}/user-preferences`, payload, {
       observe: 'response',
       headers: {
         Authorization: 'Bearer ' + this.token,
