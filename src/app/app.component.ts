@@ -1,6 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { CommonModule, DOCUMENT } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -14,6 +15,8 @@ import { AuthService } from '@auth0/auth0-angular';
   standalone: true,
   imports: [
     CommonModule,
+    RouterOutlet,
+    RouterModule,
     MatToolbarModule,
     MatButtonModule,
     MatIconModule,
@@ -27,18 +30,8 @@ export class AppComponent {
   // Inject the authentication service into your component through the constructor
   constructor(@Inject(DOCUMENT) private doc: Document, public auth: AuthService) {
     auth.isAuthenticated$.subscribe(v => {
-      this.showAbout = !v
+      // this.showAbout = !v
     });
-  }
-
-  showAbout = false;
-
-  onHelp(): void {
-
-  }
-
-  onAbout(): void {
-    this.showAbout = true;
   }
 
   onLogin(): void {
@@ -55,11 +48,4 @@ export class AppComponent {
     })
   }
 
-  onSettings(): void {
-
-  }
-
-  onBalance(): void {
-
-  }
 }
