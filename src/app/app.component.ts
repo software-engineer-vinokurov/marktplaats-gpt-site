@@ -1,22 +1,65 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, Inject } from '@angular/core';
+import { CommonModule, DOCUMENT } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatMenuModule } from '@angular/material/menu';
 import { LandingPageComponent } from './landing-page/landing-page.component';
+import { AuthService } from '@auth0/auth0-angular';
+
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [
+    CommonModule,
     MatToolbarModule,
     MatButtonModule,
     MatIconModule,
-    LandingPageComponent
+    MatMenuModule,
+    LandingPageComponent,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent {
+  // Inject the authentication service into your component through the constructor
+  constructor(@Inject(DOCUMENT) private doc: Document, public auth: AuthService) {
+    auth.isAuthenticated$.subscribe(v => {
+      this.showAbout = !v
+    });
+  }
+
+  showAbout = false;
+
+  onHelp(): void {
+
+  }
+
+  onAbout(): void {
+    this.showAbout = true;
+  }
+
+  onLogin(): void {
+    // Call this to redirect the user to the login page
+    this.auth.loginWithRedirect();
+  }
+
+  onLogout(): void {
+    // Call this to redirect the user to the login page
+    this.auth.logout({
+      logoutParams: {
+        returnTo: this.doc.location.origin
+      }
+    })
+  }
+
+  onSettings(): void {
+
+  }
+
+  onBalance(): void {
+
+  }
 }

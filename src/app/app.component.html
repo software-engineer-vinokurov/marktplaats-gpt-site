@@ -1,18 +1,70 @@
 <mat-toolbar>
-  <button mat-icon-button class="icon" aria-label="icon-button with menu icon">
+  <button mat-icon-button class="icon" aria-label="icon-button with menu icon" [matMenuTriggerFor]="menu">
     <mat-icon>menu</mat-icon>
   </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item aria-label="about button" (click)="onAbout()">
+      <mat-icon>info</mat-icon>
+      <span>About</span>
+    </button>
+    <div *ngIf="!(auth.isAuthenticated$ | async)">
+      <button mat-menu-item aria-label="log-in button" (click)="onLogin()">
+        <mat-icon>login</mat-icon>
+        <span>Log-in</span>
+      </button>
+    </div>
+    <div *ngIf="(auth.isAuthenticated$ | async)">
+      <button mat-menu-item aria-label="settings button" (click)="onSettings()">
+        <mat-icon>settings</mat-icon>
+        <span>Settings</span>
+      </button>
+      <button mat-menu-item aria-label="balance button" (click)="onBalance()">
+        <mat-icon>money</mat-icon>
+        <span>Balance</span>
+      </button>
+    </div>
+    <button mat-menu-item aria-label="help button" (click)="onHelp()">
+      <mat-icon>help</mat-icon>
+      <span>Help</span>
+    </button>
+    <div *ngIf="(auth.isAuthenticated$ | async)">
+      <button mat-menu-item aria-label="log-out button" (click)="onLogout()">
+        <mat-icon>logout</mat-icon>
+        <span>Log-out</span>
+      </button>
+    </div>
+  </mat-menu>
   <span>Negotiate Ninja</span>
   <span class="toolbar-spacer"></span>
-  <button mat-icon-button class="icon favorite-icon" aria-label="icon-button with heart icon">
-    <mat-icon>favorite</mat-icon>
-  </button>
-  <button mat-icon-button class="icon" aria-label="icon-button with share icon">
-    <mat-icon>share</mat-icon>
-  </button>
+  <div *ngIf="!(auth.isAuthenticated$ | async)">
+    <button mat-fab extended aria-label="icon-button with login icon" (click)="onLogin()">
+      <mat-icon>check</mat-icon>
+      Sign-up
+    </button>
+  </div>
+  <span class=" toolbar-spacer"></span>
+  <div *ngIf="!(auth.isAuthenticated$ | async)">
+    <button mat-fab extended aria-label="icon-button with login icon" color="primary" (click)="onLogin()">
+      <mat-icon>login</mat-icon>
+      Log-in
+    </button>
+  </div>
+  <div class="toolbar-user-name">
+    <div *ngIf="auth.user$ | async as user">
+      <span>{{ user.name }}</span>
+      {{'&nbsp;&nbsp;'}}
+    </div>
+  </div>
+  <div *ngIf="auth.user$ | async as user">
+    <button mat-icon-button class="icon" aria-label="icon-button with user profile picture" [matMenuTriggerFor]="menu">
+      <img src="{{ user.picture }}" class="user-picture">
+    </button>
+  </div>
 </mat-toolbar>
 <main>
   <section class="content">
-    <app-landing-page></app-landing-page>
+    <div *ngIf="showAbout">
+      <app-landing-page></app-landing-page>
+    </div>
   </section>
 </main>
