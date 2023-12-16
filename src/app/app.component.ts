@@ -8,6 +8,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { AuthService } from '@auth0/auth0-angular';
+import { SuggestionsService } from './suggestions.service';
 
 
 @Component({
@@ -28,7 +29,8 @@ import { AuthService } from '@auth0/auth0-angular';
 })
 export class AppComponent {
   // Inject the authentication service into your component through the constructor
-  constructor(@Inject(DOCUMENT) private doc: Document, public auth: AuthService) {
+  constructor(@Inject(DOCUMENT) private doc: Document, public auth: AuthService, private suggestionsService: SuggestionsService,
+  ) {
     auth.isAuthenticated$.subscribe(v => {
       // this.showAbout = !v
     });

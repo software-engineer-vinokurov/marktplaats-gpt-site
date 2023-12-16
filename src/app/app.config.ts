@@ -3,12 +3,14 @@ import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
 import { provideAnimations } from '@angular/platform-browser/animations';
+import { provideHttpClient } from '@angular/common/http';
 import { AuthModule } from '@auth0/auth0-angular';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes),
     provideAnimations(),
+    provideHttpClient(),
     importProvidersFrom(
       AuthModule.forRoot({
         domain: 'dev-yykxm3uopkevnok7.eu.auth0.com',
