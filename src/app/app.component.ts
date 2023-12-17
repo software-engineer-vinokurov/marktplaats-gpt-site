@@ -8,7 +8,6 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { AuthService } from '@auth0/auth0-angular';
-import { SuggestionsService } from './suggestions.service';
 
 
 @Component({
@@ -31,7 +30,7 @@ export class AppComponent {
   private intervalId: any;
 
   // Inject the authentication service into your component through the constructor
-  constructor(@Inject(DOCUMENT) private doc: Document, public auth: AuthService, private suggestionsService: SuggestionsService,
+  constructor(@Inject(DOCUMENT) private doc: Document, public auth: AuthService,
   ) {
     auth.isAuthenticated$.subscribe(v => {
       // this.showAbout = !v

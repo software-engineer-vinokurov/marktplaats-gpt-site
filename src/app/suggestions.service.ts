@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AuthService } from '@auth0/auth0-angular';
+import { TokenService } from './token.service';
 
 
 export interface SetUserPreferencesRequest {
@@ -13,31 +14,21 @@ export interface UserPreferencesResponse {
   }
 }
 
-
 @Injectable({
   providedIn: 'root'
 })
 export class SuggestionsService {
-  constructor(private http: HttpClient, private auth: AuthService,) {
-    auth.idTokenClaims$.subscribe(v => {
-      v && this.setToken(v.__raw);
-    });
-  }
+  private apiServer = "http://127.0.0.1:5000";
+  //private apiServer = "https://marktplaatsgpt.fly.dev";
 
-  apiServer = "http://127.0.0.1:5000";
-  // apiServer = "https://marktplaatsgpt.fly.dev";
-
-  token?: string;
-
-  setToken(token: string) {
-    this.token = token;
+  constructor(private http: HttpClient, private tokenService: TokenService,) {
   }
 
   getUserPreferences() {
     return this.http.get<UserPreferencesResponse>(`${this.apiServer}/user-preferences`, {
       observe: 'response',
       headers: {
-        Authorization: 'Bearer ' + this.token,
+        Authorization: 'Bearer ' + this.tokenService.token,
       }
     });
   }
@@ -49,7 +40,7 @@ export class SuggestionsService {
     return this.http.post<UserPreferencesResponse>(`${this.apiServer}/user-preferences`, payload, {
       observe: 'response',
       headers: {
-        Authorization: 'Bearer ' + this.token,
+        Authorization: 'Bearer ' + this.tokenService.token,
       }
     });
   }
