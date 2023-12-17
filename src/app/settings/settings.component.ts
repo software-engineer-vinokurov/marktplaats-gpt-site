@@ -7,6 +7,7 @@ import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import { deepCopy } from '../../utils';
 import { MatButtonModule } from '@angular/material/button';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 
 interface UserPreferences {
@@ -22,11 +23,15 @@ interface UserPreferences {
     MatCardModule,
     FormsModule,
     MatInputModule,
+    MatProgressBarModule,
   ],
   templateUrl: './settings.component.html',
   styleUrl: './settings.component.css'
 })
 export class SettingsComponent {
+  public downloading: boolean = false;
+  public uploading: boolean = false;
+
   constructor(private suggestionsService: SuggestionsService, private snackBar: MatSnackBar) { }
 
   user_preferences: UserPreferences = {}
@@ -49,7 +54,9 @@ export class SettingsComponent {
 
   onSave() {
     if (JSON.stringify(this.original_user_preferences) !== JSON.stringify(this.user_preferences)) {
+      this.uploading = true;
       this.suggestionsService.saveUserPreferences(this.user_preferences).subscribe((response) => {
+        this.uploading = false;
         if (response.body) {
           let data = response.body;
           console.log(data);
@@ -70,7 +77,9 @@ export class SettingsComponent {
   }
 
   loadUserPreferences() {
+    this.downloading = true;
     this.suggestionsService.getUserPreferences().subscribe((response) => {
+      this.downloading = false;
       if (response.body) {
         let data = response.body;
         console.log(data);
