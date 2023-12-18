@@ -6,14 +6,16 @@
   <p>Updated {{formatTimestamp(usageHistory!.updated_at!)}}</p>
   }
 
-  <table mat-table [dataSource]="dataSource" matSort (matSortChange)="announceSortChange($event)">
+  <table mat-table [dataSource]="dataSource" matSort (matSortChange)="announceSortChange($event)"
+    matSortActive="updated_at" matSortDirection="desc" matSortDisableClear>
     <ng-container matColumnDef="id">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Id </th>
       <td mat-cell *matCellDef="let record"> {{record.id}} </td>
     </ng-container>
 
     <ng-container matColumnDef="updated_at">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by time"> Updated at </th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by time">
+        Updated at </th>
       <td mat-cell *matCellDef="let record"> {{formatTimestamp(record.updated_at)}} </td>
     </ng-container>
 

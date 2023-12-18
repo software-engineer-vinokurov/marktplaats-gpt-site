@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { SuggestionsService } from '../suggestions.service';
 import { CommonModule } from '@angular/common';
 import { MatTable, MatTableDataSource, MatTableModule } from '@angular/material/table';
@@ -33,29 +33,23 @@ interface UsageHistory {
   templateUrl: './usage.component.html',
   styleUrl: './usage.component.css'
 })
-export class UsageComponent implements AfterViewInit {
+export class UsageComponent {
   public downloading: boolean = false;
   public usageHistory?: UsageHistory
   columnsToDisplay: string[] = ['updated_at', 'usage_cost', 'balance_before'];
-  dataSource!: MatTableDataSource<UsageHistoryEntry>;
+  dataSource: MatTableDataSource<UsageHistoryEntry> = new MatTableDataSource(this.usageHistory ? (this.usageHistory.entries) : []);
 
   constructor(private suggestionsService: SuggestionsService, private _liveAnnouncer: LiveAnnouncer) { }
 
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatTable) table!: MatTable<any>;
 
-
-  ngAfterViewInit() {
-    // Set default sort
-    this.sort.sort({ id: 'updated_at', start: 'desc', disableClear: true });
-  }
-
   ngOnInit() {
     this.loadUserBalance();
   }
 
   private reconnectDataSource() {
-    this.dataSource = new MatTableDataSource(this.usageHistory ? (this.usageHistory.entries) : []);
+    this.dataSource.data = this.usageHistory ? (this.usageHistory.entries) : [];
     this.dataSource.sort = this.sort;
     this.table.renderRows();
   }
