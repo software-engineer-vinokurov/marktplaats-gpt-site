@@ -3,10 +3,6 @@
     <mat-icon>menu</mat-icon>
   </button>
   <mat-menu #menu="matMenu">
-    <button mat-menu-item aria-label="about button" [routerLink]="['/about']">
-      <mat-icon>info</mat-icon>
-      <span>About</span>
-    </button>
     <div *ngIf="!(auth.isAuthenticated$ | async)">
       <button mat-menu-item aria-label="log-in button" (click)="onLogin()">
         <mat-icon>login</mat-icon>
@@ -14,18 +10,22 @@
       </button>
     </div>
     <div *ngIf="(auth.isAuthenticated$ | async)">
-      <button mat-menu-item aria-label="settings button" [routerLink]="['/settings']">
-        <mat-icon>settings</mat-icon>
-        <span>Settings</span>
-      </button>
       <button mat-menu-item aria-label="balance button" [routerLink]="['/balance']">
         <mat-icon>money</mat-icon>
         <span>Balance</span>
+      </button>
+      <button mat-menu-item aria-label="settings button" [routerLink]="['/settings']">
+        <mat-icon>settings</mat-icon>
+        <span>Settings</span>
       </button>
     </div>
     <button mat-menu-item aria-label="help button" [routerLink]="['/help']">
       <mat-icon>help</mat-icon>
       <span>Help</span>
+    </button>
+    <button mat-menu-item aria-label="about button" [routerLink]="['/about']">
+      <mat-icon>info</mat-icon>
+      <span>About</span>
     </button>
     <div *ngIf=" (auth.isAuthenticated$ | async)">
       <button mat-menu-item aria-label="log-out button" (click)="onLogout()">
@@ -64,6 +64,5 @@
     </button>
   </div>
 </mat-toolbar>
-<section class="content">
-  <router-outlet></router-outlet>
-</section>
+
+<router-outlet></router-outlet>

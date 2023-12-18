@@ -16,3 +16,29 @@ body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
+
+section.content {
+  border: solid 1px var(--debug-color);
+  border-radius: 0px;
+
+  padding: 50px;
+}
+
+
+@media (min-width: 1199px) and (max-width: 1600px) {
+  section.content {
+    padding: 50px;
+  }
+}
+
+@media (min-width: 500px) and (max-width: 1200px) {
+  section.content {
+    padding: 30px;
+  }
+}
+
+@media (max-width: 499px) {
+  section.content {
+    padding: 10px;
+  }
+}

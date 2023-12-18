@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { SuggestionsService } from '../suggestions.service';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatCardModule } from '@angular/material/card';
+
 
 interface UserBalance {
   updated_at?: string;
@@ -7,16 +10,30 @@ interface UserBalance {
   currency?: string;
 }
 
+export interface Plan {
+  name: string;
+  active: boolean;
+  color: string;
+}
+
 @Component({
   selector: 'app-balance',
   standalone: true,
-  imports: [],
+  imports: [
+    MatChipsModule,
+    MatCardModule,
+  ],
   templateUrl: './balance.component.html',
   styleUrl: './balance.component.css'
 })
 export class BalanceComponent {
   public downloading: boolean = false;
   public user_balance: UserBalance = {}
+
+  plans: Plan[] = [
+    { name: 'Freemium', active: true, color: "accent" },
+    { name: 'Premium', active: false, color: "primary" },
+  ];
 
   constructor(private suggestionsService: SuggestionsService) { }
 
@@ -36,5 +53,13 @@ export class BalanceComponent {
         console.error(response);
       }
     });
+  }
+
+  onPlanClick(planName: string) {
+
+    this.plans = [
+      { name: 'Freemium', active: true, color: "accent" },
+      { name: 'Premium', active: false, color: "primary" },
+    ];
   }
 }

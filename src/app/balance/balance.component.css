@@ -1,0 +1,27 @@
+.balance-card {
+  max-width: 800px;
+}
+
+.balance-card-content {
+  width: 100%;
+}
+
+.balance-value {
+  font-size: 1000%;
+}
+
+.balance-currency {
+  font-size: 600%;
+  padding-left: 30px;
+}
+
+@media (max-width: 1200px) {
+  .balance-value {
+    font-size: 500%;
+  }
+
+  .balance-currency {
+    font-size: 300%;
+    padding-left: 15px;
+  }
+}
