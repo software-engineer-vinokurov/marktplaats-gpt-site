@@ -20,6 +20,19 @@ export interface UserBalanceResponse {
   }
 }
 
+export interface UsageHistoryResponse {
+  updated_at?: string;
+  user_usage_history: {
+    entries: {
+      id: string;
+      updated_at: string;
+      service: string
+      cost: number;
+      balance_before: number;
+    }[]
+  }
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -32,6 +45,15 @@ export class SuggestionsService {
 
   getUserBalance() {
     return this.http.get<UserBalanceResponse>(`${this.apiServer}/user/balance`, {
+      observe: 'response',
+      headers: {
+        Authorization: 'Bearer ' + this.tokenService.token,
+      }
+    });
+  }
+
+  getUserUsageHistory() {
+    return this.http.get<UsageHistoryResponse>(`${this.apiServer}/user/usage-history`, {
       observe: 'response',
       headers: {
         Authorization: 'Bearer ' + this.tokenService.token,

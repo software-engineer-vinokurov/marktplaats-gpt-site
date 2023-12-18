@@ -5,6 +5,7 @@ import { SettingsComponent } from './settings/settings.component';
 import { AboutComponent } from './about/about.component';
 import { HelpComponent } from './help/help.component';
 import { BalanceComponent } from './balance/balance.component';
+import { UsageComponent } from './usage/usage.component';
 
 export const routes: Routes = [
   {
@@ -34,6 +35,14 @@ export const routes: Routes = [
     path: 'balance',
     component: BalanceComponent,
     title: 'Balance',
+
+    // Protect a route by registering the auth guard in the `canActivate` hook
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'usage',
+    component: UsageComponent,
+    title: 'Usage',
 
     // Protect a route by registering the auth guard in the `canActivate` hook
     canActivate: [AuthGuard],
