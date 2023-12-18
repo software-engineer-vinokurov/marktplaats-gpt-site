@@ -12,7 +12,7 @@ interface UsageHistoryEntry {
   id: string;
   updated_at: string;
   service: string
-  cost: number;
+  usage_cost: number;
   balance_before: number;
 }
 
@@ -36,7 +36,7 @@ interface UsageHistory {
 export class UsageComponent implements AfterViewInit {
   public downloading: boolean = false;
   public usageHistory?: UsageHistory
-  columnsToDisplay: string[] = ['updated_at', 'cost', 'balance_before'];
+  columnsToDisplay: string[] = ['updated_at', 'usage_cost', 'balance_before'];
   dataSource!: MatTableDataSource<UsageHistoryEntry>;
 
   constructor(private suggestionsService: SuggestionsService, private _liveAnnouncer: LiveAnnouncer) { }

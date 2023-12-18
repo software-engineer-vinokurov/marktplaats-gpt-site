@@ -27,7 +27,7 @@ export interface UsageHistoryResponse {
       id: string;
       updated_at: string;
       service: string
-      cost: number;
+      usage_cost: number;
       balance_before: number;
     }[]
   }
