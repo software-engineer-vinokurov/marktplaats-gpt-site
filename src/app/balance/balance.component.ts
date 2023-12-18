@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { SuggestionsService } from '../suggestions.service';
+import { CommonModule } from '@angular/common';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatCardModule } from '@angular/material/card';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 
 interface UserBalance {
@@ -20,8 +22,10 @@ export interface Plan {
   selector: 'app-balance',
   standalone: true,
   imports: [
+    CommonModule,
     MatChipsModule,
     MatCardModule,
+    MatProgressBarModule,
   ],
   templateUrl: './balance.component.html',
   styleUrl: './balance.component.css'
