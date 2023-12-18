@@ -12,18 +12,35 @@ export interface UserPreferencesResponse {
   }
 }
 
+export interface UserBalanceResponse {
+  updated_at?: string;
+  user_balance: {
+    balance?: number;
+    currency?: string;
+  }
+}
+
 @Injectable({
   providedIn: 'root'
 })
 export class SuggestionsService {
-  //private apiServer = "http://127.0.0.1:5000";
-  private apiServer = "https://marktplaatsgpt.fly.dev";
+  private apiServer = "http://127.0.0.1:5000";
+  //private apiServer = "https://marktplaatsgpt.fly.dev";
 
   constructor(private http: HttpClient, private tokenService: TokenService,) {
   }
 
+  getUserBalance() {
+    return this.http.get<UserBalanceResponse>(`${this.apiServer}/user/balance`, {
+      observe: 'response',
+      headers: {
+        Authorization: 'Bearer ' + this.tokenService.token,
+      }
+    });
+  }
+
   getUserPreferences() {
-    return this.http.get<UserPreferencesResponse>(`${this.apiServer}/user-preferences`, {
+    return this.http.get<UserPreferencesResponse>(`${this.apiServer}/user/preferences`, {
       observe: 'response',
       headers: {
         Authorization: 'Bearer ' + this.tokenService.token,
@@ -35,7 +52,7 @@ export class SuggestionsService {
     suggestions_context?: string;
   }) {
     const payload: SetUserPreferencesRequest = user_preferences;
-    return this.http.post<UserPreferencesResponse>(`${this.apiServer}/user-preferences`, payload, {
+    return this.http.post<UserPreferencesResponse>(`${this.apiServer}/user/preferences`, payload, {
       observe: 'response',
       headers: {
         Authorization: 'Bearer ' + this.tokenService.token,
