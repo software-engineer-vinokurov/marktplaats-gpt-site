@@ -5,6 +5,7 @@ import { MatTable, MatTableDataSource, MatTableModule } from '@angular/material/
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatSort, MatSortModule, Sort } from '@angular/material/sort';
 import { LiveAnnouncer } from '@angular/cdk/a11y';
+import { formatTimestamp } from '../../utils';
 
 
 interface UsageHistoryEntry {
@@ -74,11 +75,7 @@ export class UsageComponent implements AfterViewInit {
     });
   }
 
-  formatTimestamp(timestamp: string) {
-    const date = new Date(Date.parse(timestamp));
-    const result = date.toLocaleString();
-    return result;
-  }
+  formatTimestamp = formatTimestamp;
 
   /** Announce the change in sort state for assistive technology. */
   announceSortChange(sortState: Sort) {

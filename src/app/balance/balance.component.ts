@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatCardModule } from '@angular/material/card';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { formatTimestamp } from '../../utils';
 
 
 interface UserBalance {
@@ -40,6 +41,8 @@ export class BalanceComponent {
   ];
 
   constructor(private suggestionsService: SuggestionsService) { }
+
+  formatTimestamp = formatTimestamp;
 
   ngOnInit() {
     this.loadUserBalance();

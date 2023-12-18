@@ -5,7 +5,9 @@
   <mat-card class="balance-card">
     <mat-card-header>
       <mat-card-title>User balance</mat-card-title>
-      <mat-card-subtitle>Updated: {{user_balance.updated_at}}</mat-card-subtitle>
+      @if (user_balance.updated_at) {
+      <mat-card-subtitle>Updated {{formatTimestamp(user_balance.updated_at)}}</mat-card-subtitle>
+      }
     </mat-card-header>
     <mat-card-content class="balance-card-content">
 
