@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { TokenService } from './token.service';
+import { config } from '../config';
 
 export interface SetUserPreferencesRequest {
   suggestions_context?: string;
@@ -37,36 +37,25 @@ export interface UsageHistoryResponse {
   providedIn: 'root'
 })
 export class SuggestionsService {
-  private apiServer = "http://127.0.0.1:5000";
-  //private apiServer = "https://marktplaatsgpt.fly.dev";
 
-  constructor(private http: HttpClient, private tokenService: TokenService,) {
+  constructor(private http: HttpClient,) {
   }
 
   getUserBalance() {
-    return this.http.get<UserBalanceResponse>(`${this.apiServer}/user/balance`, {
-      observe: 'response',
-      headers: {
-        Authorization: 'Bearer ' + this.tokenService.token,
-      }
+    return this.http.get<UserBalanceResponse>(`${config.apiServer}/user/balance`, {
+      observe: 'response'
     });
   }
 
   getUserUsageHistory() {
-    return this.http.get<UsageHistoryResponse>(`${this.apiServer}/user/usage-history`, {
-      observe: 'response',
-      headers: {
-        Authorization: 'Bearer ' + this.tokenService.token,
-      }
+    return this.http.get<UsageHistoryResponse>(`${config.apiServer}/user/usage-history`, {
+      observe: 'response'
     });
   }
 
   getUserPreferences() {
-    return this.http.get<UserPreferencesResponse>(`${this.apiServer}/user/preferences`, {
-      observe: 'response',
-      headers: {
-        Authorization: 'Bearer ' + this.tokenService.token,
-      }
+    return this.http.get<UserPreferencesResponse>(`${config.apiServer}/user/preferences`, {
+      observe: 'response'
     });
   }
 
@@ -74,11 +63,8 @@ export class SuggestionsService {
     suggestions_context?: string;
   }) {
     const payload: SetUserPreferencesRequest = user_preferences;
-    return this.http.post<UserPreferencesResponse>(`${this.apiServer}/user/preferences`, payload, {
-      observe: 'response',
-      headers: {
-        Authorization: 'Bearer ' + this.tokenService.token,
-      }
+    return this.http.post<UserPreferencesResponse>(`${config.apiServer}/user/preferences`, payload, {
+      observe: 'response'
     });
   }
 }

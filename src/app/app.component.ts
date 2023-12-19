@@ -7,7 +7,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
 import { LandingPageComponent } from './landing-page/landing-page.component';
-import { AuthService } from '@auth0/auth0-angular';
+import { AuthService, GenericError } from '@auth0/auth0-angular';
+import { config } from '../config';
+import { filter, mergeMap } from 'rxjs';
 
 
 @Component({
@@ -41,6 +43,11 @@ export class AppComponent {
   showLogin = false;
 
   ngOnInit(): void {
+    this.auth.error$.pipe(
+      filter((e) => e instanceof GenericError && e.error === 'login_required'),
+      mergeMap(() => this.auth.loginWithRedirect())
+    ).subscribe();
+
     this.intervalId = setInterval(() => {
       // switching Sign-up and Log-in buttons every 2 sec, as they both do not fitt in phone's screen vertical
       this.showSignup = !this.showSignup;
@@ -56,7 +63,12 @@ export class AppComponent {
 
   onLogin(): void {
     // Call this to redirect the user to the login page
-    this.auth.loginWithRedirect();
+    this.auth.loginWithRedirect({
+      authorizationParams: {
+        // TODO: try to remove here, as it can be enough to have it in appConfig
+        audience: config.audience,
+      }
+    });
   }
 
   onLogout(): void {

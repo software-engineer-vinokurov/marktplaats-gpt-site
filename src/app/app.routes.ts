@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { AuthGuard } from '@auth0/auth0-angular';
+import { authGuardFn } from '@auth0/auth0-angular';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { SettingsComponent } from './settings/settings.component';
 import { AboutComponent } from './about/about.component';
@@ -17,9 +17,7 @@ export const routes: Routes = [
     path: 'settings',
     component: SettingsComponent,
     title: 'Settings',
-
-    // Protect a route by registering the auth guard in the `canActivate` hook
-    canActivate: [AuthGuard],
+    canActivate: [authGuardFn],
   },
   {
     path: 'about',
@@ -35,16 +33,12 @@ export const routes: Routes = [
     path: 'balance',
     component: BalanceComponent,
     title: 'Balance',
-
-    // Protect a route by registering the auth guard in the `canActivate` hook
-    canActivate: [AuthGuard],
+    canActivate: [authGuardFn],
   },
   {
     path: 'usage',
     component: UsageComponent,
     title: 'Usage',
-
-    // Protect a route by registering the auth guard in the `canActivate` hook
-    canActivate: [AuthGuard],
+    canActivate: [authGuardFn],
   },
 ];
