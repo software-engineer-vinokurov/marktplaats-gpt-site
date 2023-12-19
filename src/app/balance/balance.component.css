@@ -2,7 +2,6 @@
   min-width: 400px;
   display: inline-block;
   /* or 'inline-flex' depending on your layout needs */
-
 }
 
 .balance-card-content {
@@ -32,6 +31,10 @@
 }
 
 @media (max-width: 499px) {
+  .balance-card {
+    min-width: 0px;
+  }
+
   .balance-value {
     font-size: 400%;
   }
