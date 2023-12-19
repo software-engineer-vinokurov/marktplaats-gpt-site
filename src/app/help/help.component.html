@@ -5,9 +5,9 @@
     <button mat-flat-button (click)="accordion.openAll()">Expand All</button>
     <button mat-flat-button (click)="accordion.closeAll()">Collapse All</button>
   </div>
-  <mat-accordion class="headers-align" multi>
+  <mat-accordion class="headers-align" multi togglePosition="before">
     @for (section of sections; track section) {
-    <mat-expansion-panel>
+    <mat-expansion-panel expanded="{{isReferenced(section)}}" (opened)="onOpened(section)">
       <mat-expansion-panel-header>
         <mat-panel-title>
           {{section.title}}
