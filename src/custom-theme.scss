@@ -8,7 +8,9 @@
 // Be sure that you only ever include this mixin once!
 @include mat.core();
 
-$my-typography: mat.define-typography-config($font-family: "Roboto",
+@import './fonts.scss';
+
+$my-typography: mat.define-typography-config($font-family: 'Barlow, sans-serif',
   );
 
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
