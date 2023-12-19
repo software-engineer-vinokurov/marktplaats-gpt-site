@@ -32,6 +32,7 @@
       <span>About</span>
     </button>
     <div *ngIf=" (auth.isAuthenticated$ | async)">
+      <mat-divider></mat-divider>
       <button mat-menu-item aria-label="log-out button" (click)="onLogout()">
         <mat-icon>logout</mat-icon>
         <span>Log-out</span>

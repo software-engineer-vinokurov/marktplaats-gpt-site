@@ -6,6 +6,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatDividerModule } from '@angular/material/divider';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { AuthService, GenericError } from '@auth0/auth0-angular';
 import { config } from '../config';
@@ -23,6 +24,7 @@ import { filter, mergeMap } from 'rxjs';
     MatButtonModule,
     MatIconModule,
     MatMenuModule,
+    MatDividerModule,
     LandingPageComponent,
   ],
   templateUrl: './app.component.html',
