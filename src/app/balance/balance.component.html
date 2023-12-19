@@ -12,7 +12,7 @@
     <mat-card-content class="balance-card-content">
 
       <span class="balance-value">{{user_balance.balance}}</span>
-      <span class="balance-currency">{{user_balance.currency}}</span>
+      <span class="balance-currency">{{user_balance.currency === 'EUR' ? '€' : user_balance.currency}}</span>
     </mat-card-content>
     <!-- <mat-card-actions>
     </mat-card-actions> -->

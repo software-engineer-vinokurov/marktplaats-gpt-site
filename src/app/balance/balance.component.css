@@ -1,9 +1,13 @@
 .balance-card {
-  max-width: 800px;
+  min-width: 400px;
+  display: inline-block;
+  /* or 'inline-flex' depending on your layout needs */
+
 }
 
 .balance-card-content {
-  width: 100%;
+  white-space: nowrap;
+  /* Prevents content from wrapping, adjust as needed */
 }
 
 .balance-value {
@@ -11,17 +15,29 @@
 }
 
 .balance-currency {
-  font-size: 600%;
-  padding-left: 30px;
+  opacity: 30%;
+  font-size: 1000%;
+  padding-left: 0px;
 }
 
-@media (max-width: 1200px) {
+@media (min-width: 500px) and (max-width: 1200px) {
   .balance-value {
     font-size: 500%;
   }
 
   .balance-currency {
-    font-size: 300%;
-    padding-left: 15px;
+    font-size: 500%;
+    padding-left: 0px;
+  }
+}
+
+@media (max-width: 499px) {
+  .balance-value {
+    font-size: 400%;
+  }
+
+  .balance-currency {
+    font-size: 400%;
+    padding-left: 0px;
   }
 }
