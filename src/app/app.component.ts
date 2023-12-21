@@ -11,7 +11,6 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
 import { AuthService, GenericError } from '@auth0/auth0-angular';
 import { config } from '../config';
 import { filter, mergeMap } from 'rxjs';
-import { NegotiateNinjaLibComponent } from 'negotiate-ninja-lib';
 
 
 @Component({
@@ -27,7 +26,6 @@ import { NegotiateNinjaLibComponent } from 'negotiate-ninja-lib';
     MatMenuModule,
     MatDividerModule,
     LandingPageComponent,
-    NegotiateNinjaLibComponent,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
