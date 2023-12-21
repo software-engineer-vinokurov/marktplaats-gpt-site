@@ -8,7 +8,8 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "deploy": "npx angular-cli-ghpages --dir=dist/marktplaats-gpt-site/browser --cname=negotiate.ninja",
-    "build-n-deploy": "npm run build && npm run deploy"
+    "build-n-deploy": "npm run build && npm run deploy",
+    "analyze": "ng build -c development --source-map && source-map-explorer --no-border-checks dist/marktplaats-gpt-site/browser/main.js"
   },
   "private": true,
   "dependencies": {
