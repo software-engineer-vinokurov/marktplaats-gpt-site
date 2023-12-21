@@ -7,7 +7,8 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "deploy": "npx angular-cli-ghpages --dir=dist/marktplaats-gpt-site/browser --cname=negotiate.ninja"
+    "deploy": "npx angular-cli-ghpages --dir=dist/marktplaats-gpt-site/browser --cname=negotiate.ninja",
+    "build-n-deploy": "npm run build && npm run deploy"
   },
   "private": true,
   "dependencies": {
