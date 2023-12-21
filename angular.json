@@ -13,6 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
+            "preserveSymlinks": true,
             "outputPath": "dist/marktplaats-gpt-site",
             "index": "src/index.html",
             "browser": "src/main.ts",
@@ -51,6 +52,13 @@
               "extractLicenses": false,
               "sourceMap": true,
               "namedChunks": true
+            },
+            "development-serve": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true,
+              "tsConfig": "tsconfig.serve.json"
             }
           },
           "defaultConfiguration": "production"
@@ -59,10 +67,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "marktplaats-gpt-site:build:production"
+              "buildTarget": "marktplaats-gpt-site:build:production-serve" /* Create when needed. Check development-serve and mind custom tsconfig */
             },
             "development": {
-              "buildTarget": "marktplaats-gpt-site:build:development"
+              "buildTarget": "marktplaats-gpt-site:build:development-serve"
             }
           },
           "defaultConfiguration": "development"

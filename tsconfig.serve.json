@@ -1,0 +1,12 @@
+/* To learn more about this file see: https://angular.io/config/tsconfig. */
+{
+  "extends": "./tsconfig.app.json",
+  "compilerOptions": {
+    "paths": {
+      /* !!! For `ng serve` only!!! */
+      "negotiate-ninja-lib": [
+        "../software-engineer-vinokurov/negotiate-ninja-browser-extension/projects/negotiate-ninja-lib/src/public-api"
+      ]
+    }
+  }
+}

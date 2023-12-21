@@ -22,15 +22,7 @@
     "lib": [
       "ES2022",
       "dom"
-    ],
-    "paths": {
-      "@angular/*": [
-        "./node_modules/@angular/*"
-      ],
-      "negotiate-ninja-lib": [
-        "../software-engineer-vinokurov/negotiate-ninja-browser-extension/projects/negotiate-ninja-lib/src/public-api"
-      ]
-    }
+    ]
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
