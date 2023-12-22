@@ -51,14 +51,26 @@
               "optimization": false,
               "extractLicenses": false,
               "sourceMap": true,
-              "namedChunks": true
+              "namedChunks": true,
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.development.ts"
+                }
+              ]
             },
             "development-serve": {
               "optimization": false,
               "extractLicenses": false,
               "sourceMap": true,
               "namedChunks": true,
-              "tsConfig": "tsconfig.serve.json"
+              "tsConfig": "tsconfig.serve.json",
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.development.ts"
+                }
+              ]
             }
           },
           "defaultConfiguration": "production"

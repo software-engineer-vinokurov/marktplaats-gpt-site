@@ -9,7 +9,6 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatDividerModule } from '@angular/material/divider';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { AuthService, GenericError } from '@auth0/auth0-angular';
-import { config } from '../config';
 import { filter, mergeMap } from 'rxjs';
 
 
@@ -65,12 +64,7 @@ export class AppComponent {
 
   onLogin(): void {
     // Call this to redirect the user to the login page
-    this.auth.loginWithRedirect({
-      authorizationParams: {
-        // TODO: try to remove here, as it can be enough to have it in appConfig
-        audience: config.audience,
-      }
-    });
+    this.auth.loginWithRedirect();
   }
 
   onLogout(): void {

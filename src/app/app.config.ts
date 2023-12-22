@@ -5,7 +5,7 @@ import { routes } from './app.routes';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { authHttpInterceptorFn, provideAuth0 } from '@auth0/auth0-angular';
-import { config } from '../config';
+import { environment } from '../environments/environment';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -13,21 +13,21 @@ export const appConfig: ApplicationConfig = {
     provideAnimations(),
     provideHttpClient(withInterceptors([authHttpInterceptorFn])),
     provideAuth0({
-      domain: config.domain,
-      clientId: config.clientId,
+      domain: environment.domain,
+      clientId: environment.clientId,
       cacheLocation: 'localstorage',
       authorizationParams: {
         redirect_uri: window.location.origin,
-        audience: config.audience,
+        audience: environment.audience,
       },
       httpInterceptor: {
         allowedList: [
           {
-            uri: `${config.apiServer}/user/*`,
+            uri: `${environment.apiServer}/user/*`,
           },
         ],
       },
     }),
-    { provide: 'apiServer', useValue: config.apiServer },
+    { provide: 'apiServer', useValue: environment.apiServer },
   ]
 };
