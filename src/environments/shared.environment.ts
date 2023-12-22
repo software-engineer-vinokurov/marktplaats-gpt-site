@@ -5,4 +5,6 @@ export const sharedEnvironment = {
   clientId: '2YfPiqKOBag2bjkbxe6kJRUg3HxMbLso',
 
   chrome_extension_origin: "chrome-extension://djjiokkmnhkmccblpacjpegaaiebcmhm",
+
+  signup_enabled: false,
 };

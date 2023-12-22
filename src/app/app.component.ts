@@ -10,6 +10,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { AuthService, GenericError } from '@auth0/auth0-angular';
 import { filter, mergeMap } from 'rxjs';
+import { environment } from '../environments/environment';
 
 
 @Component({
@@ -49,11 +50,16 @@ export class AppComponent {
       mergeMap(() => this.auth.loginWithRedirect())
     ).subscribe();
 
-    this.intervalId = setInterval(() => {
-      // switching Sign-up and Log-in buttons every 2 sec, as they both do not fitt in phone's screen vertical
-      this.showSignup = !this.showSignup;
-      this.showLogin = !this.showLogin;
-    }, 1983);
+    if (environment.signup_enabled) {
+      this.intervalId = setInterval(() => {
+        // switching Sign-up and Log-in buttons every 2 sec, as they both do not fitt in phone's screen vertical
+        this.showSignup = !this.showSignup;
+        this.showLogin = !this.showLogin;
+      }, 1983);
+    } else {
+      this.showSignup = false;
+      this.showLogin = true;
+    }
   }
 
   ngOnDestroy(): void {
