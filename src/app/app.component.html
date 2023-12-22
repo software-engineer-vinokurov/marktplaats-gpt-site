@@ -45,7 +45,7 @@
   <span class="toolbar-spacer"></span>
   <div *ngIf="!(auth.isAuthenticated$ | async)">
     <div *ngIf="showSignup">
-      <button mat-fab extended aria-label="icon-button with login icon" (click)="onLogin()">
+      <button mat-fab extended aria-label="icon-button with login icon" (click)="onSignup()">
         <mat-icon>check</mat-icon>
         Sign-up
       </button>

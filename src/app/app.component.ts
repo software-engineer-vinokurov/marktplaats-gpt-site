@@ -64,7 +64,20 @@ export class AppComponent {
 
   onLogin(): void {
     // Call this to redirect the user to the login page
-    this.auth.loginWithRedirect();
+    this.auth.loginWithPopup({
+      authorizationParams: {
+        screen_hint: 'login'
+      }
+    });
+  }
+
+  onSignup(): void {
+    // Call this to redirect the user to the login page
+    this.auth.loginWithPopup({
+      authorizationParams: {
+        screen_hint: 'signup'
+      }
+    });
   }
 
   onLogout(): void {
