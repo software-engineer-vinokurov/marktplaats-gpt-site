@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 import { authGuardFn } from '@auth0/auth0-angular';
 import { LandingPageComponent } from './landing-page/landing-page.component';
-import { SettingsComponent } from 'negotiate-ninja-lib';
+import { ActionsComponent, SettingsComponent } from 'negotiate-ninja-lib';
 import { AboutComponent } from 'negotiate-ninja-lib';
 import { HelpComponent } from 'negotiate-ninja-lib';
 import { BalanceComponent } from 'negotiate-ninja-lib';
@@ -41,4 +41,9 @@ export const routes: Routes = [
     title: 'Usage',
     canActivate: [authGuardFn],
   },
+  {
+    path: 'actions',
+    component: ActionsComponent,
+    title: 'Actions',
+  }
 ];
