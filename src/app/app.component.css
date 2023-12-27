@@ -17,6 +17,21 @@
   transform: translate(-50%, -50%);
 }
 
+.user-picture-in-button {
+  border-radius: 50%;
+  /* This creates the circular shape */
+  position: relativehat;
+  width: 55%;
+  height: 100%;
+  object-fit: cover;
+  /* This ensures the image covers the area without stretching */
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(0%, -50%);
+}
+
 .toolbar-user-name {
   visibility: visible;
   font-size: 80%;
