@@ -11,6 +11,7 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
 import { AuthService, GenericError } from '@auth0/auth0-angular';
 import { filter, mergeMap } from 'rxjs';
 import { environment } from '../environments/environment';
+import { FooterComponent } from './footer/footer.component';
 
 
 @Component({
@@ -26,6 +27,7 @@ import { environment } from '../environments/environment';
     MatMenuModule,
     MatDividerModule,
     LandingPageComponent,
+    FooterComponent,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
