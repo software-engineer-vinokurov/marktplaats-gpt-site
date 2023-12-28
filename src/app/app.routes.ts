@@ -11,7 +11,7 @@ export const routes: Routes = [
   {
     path: '',
     component: LandingPageComponent,
-    title: 'Landing Page',
+    title: 'Negotiate Ninja. Web page chats + ChatGPT',
   },
   {
     path: 'settings',
