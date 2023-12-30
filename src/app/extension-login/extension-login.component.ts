@@ -26,47 +26,51 @@ export class ExtensionLoginComponent {
     const hash = window.location.hash;
     this.redirect_url = hash.substring(1);
 
-    this.route.url.subscribe(url => {
-      // The URL is an array of segments, join them to get a string
-      const currentRoute = url.map(segment => segment.path).join('/');
+    if (this.redirect_url.startsWith("safari-web-extension://") || this.redirect_url.startsWith("chrome-extension://")) {
+      this.route.url.subscribe(url => {
+        // The URL is an array of segments, join them to get a string
+        const currentRoute = url.map(segment => segment.path).join('/');
 
-      if (currentRoute === "extension/login") {
-        auth.isAuthenticated$.subscribe(v => {
-          auth.user$.subscribe(u => {
-            auth.getAccessTokenSilently().subscribe(access_token => {
-              const params = {
-                name: u?.name,
-                picture: u?.picture,
-                access_token: access_token,
-              }
+        if (currentRoute === "extension/login") {
+          auth.isAuthenticated$.subscribe(v => {
+            auth.user$.subscribe(u => {
+              auth.getAccessTokenSilently().subscribe(access_token => {
+                const params = {
+                  name: u?.name,
+                  picture: u?.picture,
+                  access_token: access_token,
+                }
 
-              const queryString = Object.entries(params)
-                .filter(([k, v]) => v !== undefined && v !== null)
-                .map(([k, v]) => `${k}=${encodeURIComponent(v!)}`)
-                .join('&');
+                const queryString = Object.entries(params)
+                  .filter(([k, v]) => v !== undefined && v !== null)
+                  .map(([k, v]) => `${k}=${encodeURIComponent(v!)}`)
+                  .join('&');
 
-              this.url_back = this.redirect_url! + "?" + queryString;
+                this.url_back = this.redirect_url! + "?" + queryString;
 
-              if (this.debugFlow) {
-                let snackBarRef = this.snackBar.open('Logged-in', 'Return to extension page', {
-                });
-                snackBarRef.onAction().subscribe(() => { this.goBack(); });
-              } else {
-                this.goBack();
-              }
+                if (this.debugFlow) {
+                  let snackBarRef = this.snackBar.open('Logged-in', 'Return to extension page', {
+                  });
+                  snackBarRef.onAction().subscribe(() => { this.goBack(); });
+                } else {
+                  this.goBack();
+                }
+              });
             });
           });
-        });
-      } else if (currentRoute === "extension/signup") {
-        // TODO: implement signup + return back to ext. flow
-      } else if (currentRoute === "extension/logout") {
-        auth.logout({
-          logoutParams: {
-            returnTo: window.location.origin
-          }
-        });
-      }
-    });
+        } else if (currentRoute === "extension/signup") {
+          // TODO: implement signup + return back to ext. flow
+        } else if (currentRoute === "extension/logout") {
+          auth.logout({
+            logoutParams: {
+              returnTo: window.location.origin
+            }
+          });
+        }
+      });
+    } else {
+      alert("Not supported: " + this.redirect_url);
+    }
   }
 
   goBack() {
