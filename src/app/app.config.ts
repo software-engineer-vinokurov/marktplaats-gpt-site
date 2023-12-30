@@ -29,5 +29,6 @@ export const appConfig: ApplicationConfig = {
       },
     }),
     { provide: 'apiServer', useValue: environment.apiServer },
+    { provide: 'siteBaseUrl', useValue: '' }
   ]
 };
