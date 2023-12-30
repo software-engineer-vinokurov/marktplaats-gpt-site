@@ -9,9 +9,11 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatDividerModule } from '@angular/material/divider';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { AuthService, GenericError } from '@auth0/auth0-angular';
-import { filter, mergeMap } from 'rxjs';
+import { filter, map } from 'rxjs';
 import { environment } from '../environments/environment';
 import { FooterComponent } from './footer/footer.component';
+import { sendMessageExt, connect } from '../messaging'
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 @Component({
@@ -35,12 +37,35 @@ import { FooterComponent } from './footer/footer.component';
 export class AppComponent {
   private intervalId: any;
 
-  // Inject the authentication service into your component through the constructor
-  constructor(@Inject(DOCUMENT) private doc: Document, public auth: AuthService,
+  constructor(
+    @Inject(DOCUMENT) private doc: Document,
+    public auth: AuthService,
+    private snackBar: MatSnackBar,
   ) {
     auth.isAuthenticated$.subscribe(v => {
-      // this.showAbout = !v
+      auth.getAccessTokenSilently().subscribe(this.commToExtension);
     });
+  }
+
+  commToExtension(access_token: string) {
+    const message = {
+      task: 'store-access-token',
+      access_token: access_token,
+    };
+    // FIXME: Trying to send access-token to extension (works in Chrome but not in Safari), see https://github.com/software-engineer-vinokurov/negotiate-ninja-browser-extension/issues/10
+    try {
+      let port = connect();
+      port?.onMessage.addListener((m: any) => {
+        console.log("In port, received message from extension background script: ", m);
+      });
+      port?.postMessage(message);
+      // And attempt via sendMessage:
+      sendMessageExt(message).then((response: any) => {
+        console.log("Received response for 'store-access-token' task from the extension background script:", response);
+      });
+    } catch (error) {
+      console.log("Communication to extension background script failed:", error);
+    }
   }
 
   showSignup = true;
@@ -49,7 +74,17 @@ export class AppComponent {
   ngOnInit(): void {
     this.auth.error$.pipe(
       filter((e) => e instanceof GenericError && e.error === 'login_required'),
-      mergeMap(() => this.auth.loginWithRedirect())
+      map(() => {
+        // FIXME: disabling for now the login snack bar as it is naggin always, even on landing page!
+        const enabled = false;
+        if (enabled) {
+          let snackBarRef = this.snackBar.open('Login required', 'Login', {
+            duration: 3000
+          });
+          snackBarRef.onAction().subscribe(() => this.auth.loginWithRedirect());
+        }
+      }
+      )
     ).subscribe();
 
     if (environment.signup_enabled) {

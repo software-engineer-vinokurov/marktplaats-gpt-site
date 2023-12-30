@@ -1,4 +1,5 @@
 import { Component, Inject } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
 import { AuthService } from '@auth0/auth0-angular';
 
@@ -6,15 +7,22 @@ import { AuthService } from '@auth0/auth0-angular';
 @Component({
   selector: 'app-extension-login',
   standalone: true,
-  imports: [],
+  imports: [
+  ],
   templateUrl: './extension-login.component.html',
   styleUrl: './extension-login.component.css'
 })
 export class ExtensionLoginComponent {
 
   redirect_url?: string;
+  url_back!: string;
+  debugFlow = false; // will show snack bar to stay on the page
 
-  constructor(public auth: AuthService, private route: ActivatedRoute) {
+  constructor(
+    public auth: AuthService,
+    private route: ActivatedRoute,
+    private snackBar: MatSnackBar,
+  ) {
     const hash = window.location.hash;
     this.redirect_url = hash.substring(1);
 
@@ -37,17 +45,31 @@ export class ExtensionLoginComponent {
                 .map(([k, v]) => `${k}=${encodeURIComponent(v!)}`)
                 .join('&');
 
-              window.location.href = this.redirect_url! + "?" + queryString;
+              this.url_back = this.redirect_url! + "?" + queryString;
+
+              if (this.debugFlow) {
+                let snackBarRef = this.snackBar.open('Logged-in', 'Return to extension page', {
+                });
+                snackBarRef.onAction().subscribe(() => { this.goBack(); });
+              } else {
+                this.goBack();
+              }
             });
           });
         });
       } else if (currentRoute === "extension/signup") {
-        // TODO: add extension/signup support
+        // TODO: implement signup + return back to ext. flow
       } else if (currentRoute === "extension/logout") {
-        auth.logout();
+        auth.logout({
+          logoutParams: {
+            returnTo: window.location.origin
+          }
+        });
       }
     });
+  }
 
-
+  goBack() {
+    window.location.href = this.url_back;
   }
 }
