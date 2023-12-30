@@ -6,6 +6,7 @@ import { AboutComponent } from 'negotiate-ninja-lib';
 import { HelpComponent } from 'negotiate-ninja-lib';
 import { BalanceComponent } from 'negotiate-ninja-lib';
 import { UsageComponent } from 'negotiate-ninja-lib';
+import { ExtensionLoginComponent } from './extension-login/extension-login.component';
 
 export const routes: Routes = [
   {
@@ -45,5 +46,21 @@ export const routes: Routes = [
     path: 'actions',
     component: ActionsComponent,
     title: 'Actions',
+  },
+  {
+    path: 'extension/login',
+    component: ExtensionLoginComponent,
+    title: 'Extension Login',
+    canActivate: [authGuardFn],
+  },
+  {
+    path: 'extension/signup',
+    component: ExtensionLoginComponent,
+    title: 'Extension Signup',
+  },
+  {
+    path: 'extension/logout',
+    component: ExtensionLoginComponent,
+    title: 'Extension Logout',
   }
 ];
