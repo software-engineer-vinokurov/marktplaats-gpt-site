@@ -49,5 +49,5 @@ $dark-theme: mat.define-dark-theme((color: (primary: mat.define-palette(mat.$pin
 @media (prefers-color-scheme: dark) {
   // Use the `-color` mixins to only apply color styles without reapplying the same
   // typography and density styles.
-  @include mat.all-component-themes($dark-theme);
+  @include mat.all-component-colors($dark-theme);
 }
