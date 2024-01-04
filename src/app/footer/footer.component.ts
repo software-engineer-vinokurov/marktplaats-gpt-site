@@ -17,18 +17,29 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class FooterComponent {
 
-  footerOpacity?: string = "opacity: 100%;";
+  footerOpacity?: string = "opacity: 10%;";
 
   constructor(
     public dialog: MatDialog
   ) { }
 
-  @HostListener('window:scroll', ['$event'])
-  onScroll(event: any) {
+  recalcOpacity() {
     const pos = (document.documentElement.scrollTop || document.body.scrollTop) + document.documentElement.offsetHeight;
     const max = document.documentElement.scrollHeight;
     this.footerOpacity = `opacity: ${Math.round((100 * pos) / max)}%;`;
     // console.log(`pos: ${pos} max: ${max} footerOpacity: ${this.footerOpacity}`);
+  }
+
+  @HostListener('window:scroll', ['$event'])
+  onScroll(event: any) {
+    this.recalcOpacity();
+  }
+
+  ngOnInit() {
+    setTimeout(() =>
+      this.recalcOpacity(),
+      0
+    );
   }
 
   openTermsDialog() {

@@ -1,4 +1,4 @@
-.footer {
+#footer {
   position: fixed;
   left: 0;
   bottom: 0;
@@ -8,6 +8,15 @@
   opacity: 50%;
 }
 
-.pre-footer {
-  padding-top: 100px;
+#pre-footer {
+  width: 100%;
+  padding-top: 150px;
+  box-sizing: border-box;
+}
+
+
+@media (max-width: 700px) {
+  #pre-footer {
+    padding-top: 200px;
+  }
 }
