@@ -9,4 +9,12 @@ import { Component } from '@angular/core';
 })
 export class LandingPageComponent {
 
+  ngOnInit() {
+    var video = document.getElementById("background-video") as HTMLVideoElement;
+    video.oncanplaythrough = function () {
+      video.muted = true;
+      video.play();
+    }
+  }
+
 }
