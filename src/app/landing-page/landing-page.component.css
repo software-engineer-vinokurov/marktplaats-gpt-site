@@ -108,6 +108,12 @@ q {
   width: 100%;
 }
 
+.call-to-action {
+  border: solid 4px red;
+  border-radius: 30px;
+  padding: 30px;
+}
+
 @media (max-width: 750px) {
   #background-video {
     display: none;
