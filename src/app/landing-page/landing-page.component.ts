@@ -1,9 +1,12 @@
 import { Component } from '@angular/core';
+import { SubscribeFormComponent } from 'negotiate-ninja-lib';
 
 @Component({
   selector: 'app-landing-page',
   standalone: true,
-  imports: [],
+  imports: [
+    SubscribeFormComponent,
+  ],
   templateUrl: './landing-page.component.html',
   styleUrl: './landing-page.component.css'
 })
