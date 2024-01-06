@@ -11,6 +11,12 @@
   font-style: italic;
 }
 
+.team-player {
+  width: 400px;
+  /* border: solid 1px var(--debug-color); */
+  border-radius: 50px;
+}
+
 
 @media (min-width: 500px) and (max-width: 1200px) {
   .about-content {
@@ -23,5 +29,9 @@
   .about-content {
     padding-left: 0%;
     padding-right: 0%;
+  }
+
+  .team-player {
+    width: 100%;
   }
 }
