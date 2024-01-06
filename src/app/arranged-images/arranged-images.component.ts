@@ -59,9 +59,6 @@ export class ArrangedImagesComponent {
       let originalOffsetX: number = parseFloat(originalOffsetXpx);
       let originalOffsetY: number = parseFloat(originalOffsetYpx);
 
-      console.log("originalOffsetX", originalOffsetX);
-      console.log("originalOffsetY", originalOffsetY);
-
       // Event listeners to handle drag
       draggableImage.addEventListener('mousedown', (e) => {
         isDragging = true;
