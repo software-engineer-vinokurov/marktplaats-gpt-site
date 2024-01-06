@@ -2,11 +2,11 @@ import { Routes } from '@angular/router';
 import { authGuardFn } from '@auth0/auth0-angular';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { ActionsComponent, SettingsComponent } from 'negotiate-ninja-lib';
-import { AboutComponent } from 'negotiate-ninja-lib';
 import { HelpComponent } from 'negotiate-ninja-lib';
 import { BalanceComponent } from 'negotiate-ninja-lib';
 import { UsageComponent } from 'negotiate-ninja-lib';
 import { ExtensionLoginComponent } from './extension-login/extension-login.component';
+import { AboutComponent } from './about/about.component';
 
 export const routes: Routes = [
   {
