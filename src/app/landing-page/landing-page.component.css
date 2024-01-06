@@ -114,51 +114,6 @@ q {
   padding: 30px;
 }
 
-.image-container {
-  margin-left: 0;
-  /* Removes any left margin */
-  padding-left: 0;
-  /* Ensures there's no padding on the left */
-  position: absolute;
-  /* Positions the element absolutely within its relative container */
-  left: 0;
-  /* Aligns the element to the left edge of the container */
-
-  display: inline-block;
-  /* Or another display type as needed */
-}
-
-.image-in-action {
-  margin-left: 0;
-  /* Removes any left margin */
-  padding-left: 0;
-  /* Ensures there's no padding on the left */
-  position: absolute;
-  /* Positions the element absolutely within its relative container */
-  left: 0;
-  /* Aligns the element to the left edge of the container */
-
-  display: block;
-}
-
-.image-in-action-spacer {
-  opacity: 0.0;
-}
-
-.image-options {
-  position: absolute;
-  left: 100px;
-  /* Aligns with the left of .image-in-action */
-  top: 0;
-  /* Aligns with the top of .image-in-action */
-  /* other styling as needed */
-
-  display: block;
-
-  padding-top: 5vh;
-  padding-left: 16vw;
-}
-
 @media (max-width: 750px) {
   #background-video {
     display: none;

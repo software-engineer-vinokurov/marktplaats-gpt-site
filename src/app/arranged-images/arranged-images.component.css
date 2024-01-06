@@ -1,0 +1,40 @@
+.image-spacer-container {
+  /* border: dotted 5px violet;
+  border-radius: 10px; */
+  opacity: 0;
+}
+
+.image-container {
+  /* visibility: hidden; */
+  margin-left: 0;
+  /* Removes any left margin */
+  padding-left: 0;
+  /* Ensures there's no padding on the left */
+  position: absolute;
+  /* Positions the element absolutely within its relative container */
+  left: 0;
+  /* Aligns the element to the left edge of the container */
+
+  display: inline-block;
+  /* Or another display type as needed */
+
+}
+
+.image-in-action {
+  margin-left: 0;
+  /* Removes any left margin */
+  padding-left: 0;
+  /* Ensures there's no padding on the left */
+  position: absolute;
+  /* Positions the element absolutely within its relative container */
+  left: 0;
+  /* Aligns the element to the left edge of the container */
+
+  display: block;
+}
+
+.image-options {
+  position: absolute;
+
+  display: block;
+}

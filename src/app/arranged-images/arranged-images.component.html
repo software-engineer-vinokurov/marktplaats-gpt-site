@@ -1,0 +1,11 @@
+<div class="image-spacer-container" #imageSpacerContainerId>
+  <!-- This container should recreate a combination of images of same height as visible ones -->
+  <img #imageSpacerId [src]="leftImgSrc" alt="This is a not visible placeholder">
+</div>
+
+<div class="image-container" #imageContainerId>
+  <img class="image-in-action" [src]="leftImgSrc" [alt]="leftImgAlt">
+  @if (centralImgSrc) {
+  <img class="image-options" [src]="centralImgSrc" [alt]="centralImgAlt" [style]="centralImgStyle">
+  }
+</div>
