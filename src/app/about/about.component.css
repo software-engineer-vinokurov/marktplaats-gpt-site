@@ -1,0 +1,27 @@
+.about-content {
+  padding-left: 20%;
+  padding-right: 20%;
+  border: solid 1px var(--debug-color);
+  border-radius: 0px;
+  min-height: 100vh;
+}
+
+.intro {
+  font-size: 1.4rem;
+  font-style: italic;
+}
+
+
+@media (min-width: 500px) and (max-width: 1200px) {
+  .about-content {
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+}
+
+@media (max-width: 499px) {
+  .about-content {
+    padding-left: 0%;
+    padding-right: 0%;
+  }
+}
