@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { SubscribeFormComponent } from 'negotiate-ninja-lib';
-import { ArrangedImagesComponent } from '../arranged-images/arranged-images.component';
+import { SubscribeFormComponent, ArrangedImagesComponent } from 'negotiate-ninja-lib';
 
 @Component({
   selector: 'app-landing-page',
