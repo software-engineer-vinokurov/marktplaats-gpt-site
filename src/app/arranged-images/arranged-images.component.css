@@ -17,7 +17,6 @@
 
   display: inline-block;
   /* Or another display type as needed */
-
 }
 
 .image-in-action {
@@ -37,4 +36,7 @@
   position: absolute;
 
   display: block;
+
+  cursor: grab;
+  /* Change cursor to 'grab' when hovering over the image */
 }
