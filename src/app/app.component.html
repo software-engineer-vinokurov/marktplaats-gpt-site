@@ -7,6 +7,14 @@
       </button>
     </div>
     <div *ngIf="(auth.isAuthenticated$ | async)">
+      <div *ngIf="auth.user$ | async as user">
+        @if (isAdmin(user)) {
+        <button mat-menu-item aria-label="admin button" [routerLink]="['/admin']">
+          <mat-icon>admin_panel_settings</mat-icon>
+          <span>Admin</span>
+        </button>
+        }
+      </div>
       <button mat-menu-item aria-label="balance button" [routerLink]="['/balance']">
         <mat-icon>money</mat-icon>
         <span>Balance</span>

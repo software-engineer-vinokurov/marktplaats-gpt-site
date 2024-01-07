@@ -8,7 +8,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatDividerModule } from '@angular/material/divider';
 import { LandingPageComponent } from './landing-page/landing-page.component';
-import { AuthService, GenericError } from '@auth0/auth0-angular';
+import { AuthService, GenericError, User } from '@auth0/auth0-angular';
 import { filter, map } from 'rxjs';
 import { environment } from '../environments/environment';
 import { FooterComponent } from './footer/footer.component';
@@ -45,6 +45,10 @@ export class AppComponent {
     auth.isAuthenticated$.subscribe(v => {
       auth.getAccessTokenSilently().subscribe(this.commToExtension);
     });
+  }
+
+  isAdmin(user: User) {
+    return user.sub === environment.auth0_admin_user_id;
   }
 
   commToExtension(access_token: string) {

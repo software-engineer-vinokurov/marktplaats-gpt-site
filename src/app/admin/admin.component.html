@@ -1,0 +1,35 @@
+<mat-progress-bar mode="query" *ngIf="downloading"></mat-progress-bar>
+<mat-progress-bar mode="indeterminate" *ngIf="uploading"></mat-progress-bar>
+
+<div class="content">
+  <h2 class="mat-h2">Invite</h2>
+
+  <form class="invite-form">
+    <mat-form-field class="invite-full-width">
+      <mat-label>New User Email</mat-label>
+      <input matInput placeholder="Ex. bob@sil.ent" [(ngModel)]="inviteEmail" [ngModelOptions]="{standalone: true}">
+    </mat-form-field>
+
+    <mat-form-field class="invite-full-width">
+      <mat-label>Internal Comment</mat-label>
+      <textarea matInput placeholder="Ex. A nice guy, but..." [(ngModel)]="inviteInternalComment"
+        [ngModelOptions]="{standalone: true}"></textarea>
+    </mat-form-field>
+  </form>
+
+  <button mat-button color="warn" (click)="onInvite()">CREATE USER & INVITE LINK</button>
+
+  @if (inviteResponse?.["ticket"]) {
+  <h1 class="mat-h1">Ticket:</h1>
+  <h2 class="mat-h1"><code>{{inviteResponse?.["ticket"]}}</code></h2>
+  }
+
+  <p>
+    @if (inviteResponseJSON) {
+    <code>{{inviteResponseJSON}}</code>
+    }
+    @if (inviteErrorJSON) {
+    <code>{{inviteErrorJSON}}</code>
+    }
+  </p>
+</div>

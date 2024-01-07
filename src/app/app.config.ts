@@ -23,7 +23,7 @@ export const appConfig: ApplicationConfig = {
       httpInterceptor: {
         allowedList: [
           {
-            uri: `${environment.apiServer}/user/*`,
+            uri: `${environment.apiServer}/*`,
           },
         ],
       },
