@@ -19,9 +19,9 @@
 
   <button mat-button color="warn" (click)="onInvite()">CREATE USER & INVITE LINK</button>
 
-  @if (inviteResponse?.["ticket"]) {
-  <h1 class="mat-h1">Ticket:</h1>
-  <h2 class="mat-h1"><code>{{inviteResponse?.["ticket"]}}</code></h2>
+  @if (inviteResponse?.["invite_link"]) {
+  <h1 class="mat-h1">Invite page:</h1>
+  <h2 class="mat-h1">(safe to open) <a [href]="inviteResponse?.invite_link">{{inviteResponse?.invite_link}}</a></h2>
   }
 
   <p>

@@ -8,6 +8,7 @@ import { UsageComponent } from 'negotiate-ninja-lib';
 import { ExtensionLoginComponent } from './extension-login/extension-login.component';
 import { AboutComponent } from './about/about.component';
 import { AdminComponent } from './admin/admin.component';
+import { PersonalInviteComponent } from './personal-invite/personal-invite.component';
 
 export const routes: Routes = [
   {
@@ -69,5 +70,10 @@ export const routes: Routes = [
     component: AdminComponent,
     title: 'Admin',
     canActivate: [authGuardFn],
+  },
+  {
+    path: 'invite',
+    component: PersonalInviteComponent,
+    title: 'Invite',
   },
 ];
