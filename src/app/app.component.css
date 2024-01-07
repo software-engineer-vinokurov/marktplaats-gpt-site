@@ -33,13 +33,12 @@
 }
 
 .toolbar-user-name {
-  visibility: visible;
   font-size: 80%;
 }
 
 @media (max-width: 499px) {
   .toolbar-user-name {
-    visibility: hidden;
+    display: none;
     width: 0px;
     height: 0px;
   }
