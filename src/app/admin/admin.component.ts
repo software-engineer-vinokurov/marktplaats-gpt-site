@@ -45,7 +45,7 @@ export class AdminComponent {
   }
 
   onInvite() {
-    if (confirm(`Inviting ${this.inviteEmail} with internal comment: "${this.inviteInternalComment}?`)) {
+    if (confirm(`Inviting ${this.inviteEmail} with internal comment: "${this.inviteInternalComment}"?`)) {
       this.uploading = true;
       this.suggestionsService.inviteNewUser({
         email: this.inviteEmail,
