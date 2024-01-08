@@ -6,7 +6,7 @@ export const sharedEnvironment = {
 
   chrome_extension_origin: "chrome-extension://djjiokkmnhkmccblpacjpegaaiebcmhm",
 
-  signup_enabled: false,
+  signup_enabled: true,
 
   auth0_admin_user_id: "auth0|6599ebf0ad6029415ba50060",
 };

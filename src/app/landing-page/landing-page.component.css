@@ -55,7 +55,7 @@
   background: rgba(0, 0, 0, 0.9);
   /* Darkening effect */
 
-  opacity: 0.96;
+  opacity: 0.92;
 
   z-index: -1;
 
@@ -83,6 +83,10 @@ p {
   font-size: 1.8rem;
   margin-top: 4vh;
   line-height: 1.4;
+}
+
+.regular-text {
+  font-size: 1.8rem;
 }
 
 ul {
@@ -117,6 +121,25 @@ q {
   border: solid 4px red;
   border-radius: 30px;
   padding: 30px;
+}
+
+.call-to-action-subscribe {
+  border: solid 12px violet;
+  border-radius: 30px;
+  padding: 30px;
+}
+
+.cta-button {
+  margin-top: 30px;
+  margin-bottom: 16px;
+  padding: 36px;
+
+  /* padding-bottom: 4px; */
+  font-size: 1.6rem;
+}
+
+.centered {
+  text-align: center;
 }
 
 @media (max-width: 750px) {
