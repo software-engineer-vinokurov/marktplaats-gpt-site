@@ -190,13 +190,35 @@
     <!-- Call to Action -->
 
     @if (cta.includes("request-invite")) {
-    <p class="call-to-action">
+    <!-- <p class="call-to-action">
       Ready to enhance your negotiation skills?
       <br><br>
       ☞ Request beta access:
       <br><br>
+
+      <span visibility="hidden">
+      !!!!!!!! 08-01-2024 -- THIS COMPONENT BRINGS WEIRD ERRORS ON RECOMPILATION OF `ng serve`:
+
+      ```
+      ✘ [ERROR] TS-993004: Unable to import component MatFabButton.
+        The symbol is not exported from /Users/aleksandrvin/Developer/software-engineer-vinokurov/negotiate-ninja-browser-extension/node_modules/@angular/material/button/index.d.ts (module '@angular/material/button'). [plugin angular-compiler]
+
+          src/app/about/about.component.ts:24:13:
+            24 │ export class AboutComponent {
+              ╵              ~~~~~~~~~~~~~~
+
+        The component is declared here.
+
+          ../software-engineer-vinokurov/negotiate-ninja-browser-extension/node_modules/@angular/material/button/index.d.ts:164:0:
+            164 │ export declare class MatFabButton extends MatButtonBase {
+                ╵ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+      Application bundle generation failed. [0.108 seconds]
+      ```
+      </span>
+
       <nn-request-invite-form tags="about" (inviteRequestedEvent)="onRequest($event)"></nn-request-invite-form>
-    </p>
+    </p> -->
     }
 
     @if (cta.includes("signup")) {

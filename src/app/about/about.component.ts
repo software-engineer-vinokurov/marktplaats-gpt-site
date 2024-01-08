@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { AuthService } from '@auth0/auth0-angular';
-import { SubscribeFormComponent, RequestInviteFormComponent, InviteRequestedEvent } from 'negotiate-ninja-lib';
+import { SubscribeFormComponent } from 'negotiate-ninja-lib';
 import { environment } from '../../environments/environment';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
@@ -16,7 +16,6 @@ type CTAType = "signup" | "request-invite" | "subscribe";
     MatIconModule,
     MatButtonModule,
     SubscribeFormComponent,
-    RequestInviteFormComponent,
   ],
   templateUrl: './about.component.html',
   styleUrl: './about.component.css'
@@ -33,10 +32,6 @@ export class AboutComponent {
         this.cta = environment.signup_enabled ? "signup" : "request-invite";
       }
     });
-  }
-
-  onRequest(e: InviteRequestedEvent) {
-    console.log("NOT IMPLEMENTED", e)
   }
 
   onSignup() {
