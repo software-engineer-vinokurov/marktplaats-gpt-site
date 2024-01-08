@@ -16,6 +16,11 @@
   border: solid 1px var(--debug-color);
   border-radius: 0px;
   min-height: 100vh;
+
+  position: relative;
+  overflow-x: clip;
+  width: 60vw;
+  /* Prevent horizontal scroll */
 }
 
 #background-video {
@@ -139,6 +144,8 @@ q {
   .landing-page-content {
     padding-left: 5%;
     padding-right: 5%;
+    width: 90vw;
+    /* Prevent horizontal scroll */
   }
 }
 
@@ -150,5 +157,7 @@ q {
   .landing-page-content {
     padding-left: 0%;
     padding-right: 0%;
+    width: 100vw;
+    /* Prevent horizontal scroll */
   }
 }
