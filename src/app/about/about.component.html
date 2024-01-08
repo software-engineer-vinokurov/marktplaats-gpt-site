@@ -187,9 +187,41 @@
     <!-- [: End with a CTA, encouraging visitors to explore your services, sign up, or contact you for more
     information.] -->
 
-    <p>
+    <!-- Call to Action -->
+
+    @if (cta.includes("request-invite")) {
+    <p class="call-to-action">
+      Ready to enhance your negotiation skills?
+      <br><br>
+      ☞ Request beta access:
+      <br><br>
+      <nn-request-invite-form tags="about" (inviteRequestedEvent)="onRequest($event)"></nn-request-invite-form>
+    </p>
+    }
+
+    @if (cta.includes("signup")) {
+    <div class="call-to-action">
+      <div class="centered regular-text">
+        Ready to enhance your negotiation skills?
+      </div>
+      <br>
+      <div class="centered regular-text">
+        🌟 &nbsp;&nbsp; <button mat-fab extended class="cta-button" aria-label="icon-button with login icon"
+          (click)="onSignup()">
+          <mat-icon>check</mat-icon>
+          SIGN-UP
+        </button> &nbsp;&nbsp; 🌟
+      </div>
+    </div>
+    }
+
+    @if (cta.includes("subscribe")) {
+    <p class="call-to-action-subscribe">
+      ☞ Don't forget to subscribe to our
+      mailing list for updates!<br><br>
       <nn-subscribe-form tags="about"></nn-subscribe-form>
     </p>
+    }
 
   </div>
 </div>
