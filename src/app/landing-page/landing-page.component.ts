@@ -4,6 +4,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { SubscribeFormComponent, ArrangedImagesComponent } from 'negotiate-ninja-lib';
 import { environment } from '../../environments/environment';
 import { AuthService } from '@auth0/auth0-angular';
+import { Router } from '@angular/router';
 
 type CTAType = "signup" | "request-invite" | "subscribe";
 
@@ -21,9 +22,9 @@ type CTAType = "signup" | "request-invite" | "subscribe";
 })
 export class LandingPageComponent {
 
-  cta!: CTAType;
+  cta: CTAType = "subscribe";
 
-  constructor(public auth: AuthService,) {
+  constructor(public auth: AuthService, private router: Router,) {
     auth.isAuthenticated$.subscribe((v) => {
       if (v) {
         this.cta = "subscribe";
@@ -42,11 +43,14 @@ export class LandingPageComponent {
   }
 
   onSignup() {
-    this.auth.loginWithPopup({
+    this.auth.loginWithRedirect({
       authorizationParams: {
-        screen_hint: 'signup'
+        screen_hint: 'signup',
+      },
+      appState: {
+        target: '/get-started',
       }
-    });
+    })
   }
 
 }

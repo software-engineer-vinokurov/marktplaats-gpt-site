@@ -22,7 +22,7 @@ type CTAType = "signup" | "request-invite" | "subscribe";
 })
 export class AboutComponent {
 
-  cta!: CTAType;
+  cta: CTAType = "subscribe";
 
   constructor(public auth: AuthService,) {
     auth.isAuthenticated$.subscribe((v) => {
@@ -35,9 +35,12 @@ export class AboutComponent {
   }
 
   onSignup() {
-    this.auth.loginWithPopup({
+    this.auth.loginWithRedirect({
       authorizationParams: {
-        screen_hint: 'signup'
+        screen_hint: 'signup',
+      },
+      appState: {
+        target: '/get-started',
       }
     });
   }

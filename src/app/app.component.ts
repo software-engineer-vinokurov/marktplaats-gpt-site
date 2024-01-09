@@ -78,11 +78,9 @@ export class AppComponent {
   ngOnInit(): void {
     this.auth.error$.pipe(
       filter((e) => e instanceof GenericError && e.error === 'login_required'),
-      map(() => {
-        // FIXME: disabling for now the login snack bar as it is naggin always, even on landing page!
-        const enabled = false;
-        if (enabled) {
-          let snackBarRef = this.snackBar.open('Login required', 'Login', {
+      map((e: Error) => {
+        if (false) { // FIXME: disabling it as it nags on every page if not logged-in
+          let snackBarRef = this.snackBar.open((e as GenericError).error_description, 'Login', {
             duration: 3000
           });
           snackBarRef.onAction().subscribe(() => this.auth.loginWithRedirect());
@@ -120,9 +118,12 @@ export class AppComponent {
 
   onSignup(): void {
     // Call this to redirect the user to the login page
-    this.auth.loginWithPopup({
+    this.auth.loginWithRedirect({
       authorizationParams: {
-        screen_hint: 'signup'
+        screen_hint: 'signup',
+      },
+      appState: {
+        target: '/get-started',
       }
     });
   }

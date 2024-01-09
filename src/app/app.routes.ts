@@ -8,7 +8,8 @@ import { UsageComponent } from 'negotiate-ninja-lib';
 import { ExtensionLoginComponent } from './extension-login/extension-login.component';
 import { AboutComponent } from './about/about.component';
 import { AdminComponent } from './admin/admin.component';
-import { PersonalInviteComponent } from './personal-invite/personal-invite.component';
+import { GetStartedComponent } from './get-started/get-started.component';
+import { AuthCallbackComponent } from './auth-callback/auth-callback.component';
 
 export const routes: Routes = [
   {
@@ -17,63 +18,69 @@ export const routes: Routes = [
     title: 'Negotiate Ninja. Adding ChatGPT to any web chat',
   },
   {
+    path: 'auth-callback',
+    component: AuthCallbackComponent,
+    title: 'Negotiate Ninja. Calling Back',
+  },
+  {
     path: 'settings',
     component: SettingsComponent,
-    title: 'Settings',
+    title: 'Negotiate Ninja. Settings',
     canActivate: [authGuardFn],
   },
   {
     path: 'about',
     component: AboutComponent,
-    title: 'About',
+    title: 'About Negotiate Ninja',
   },
   {
     path: 'help',
     component: HelpComponent,
-    title: 'Help',
+    title: 'Negotiate Ninja. Help',
   },
   {
     path: 'balance',
     component: BalanceComponent,
-    title: 'Balance',
+    title: 'Negotiate Ninja. Balance',
     canActivate: [authGuardFn],
   },
   {
     path: 'usage',
     component: UsageComponent,
-    title: 'Usage',
+    title: 'Negotiate Ninja. Usage',
+    canActivate: [authGuardFn],
+  },
+  {
+    path: 'get-started',
+    component: GetStartedComponent,
+    title: 'Get Started with Negotiate Ninja',
     canActivate: [authGuardFn],
   },
   {
     path: 'actions',
     component: ActionsComponent,
-    title: 'Actions',
+    title: 'Negotiate Ninja. Actions',
   },
   {
     path: 'extension/login',
     component: ExtensionLoginComponent,
-    title: 'Extension Login',
+    title: 'Negotiate Ninja. Extension Login',
     canActivate: [authGuardFn],
   },
   {
     path: 'extension/signup',
     component: ExtensionLoginComponent,
-    title: 'Extension Signup',
+    title: 'Negotiate Ninja. Extension Signup',
   },
   {
     path: 'extension/logout',
     component: ExtensionLoginComponent,
-    title: 'Extension Logout',
+    title: 'Negotiate Ninja. Extension Logout',
   },
   {
     path: 'admin',
     component: AdminComponent,
-    title: 'Admin',
+    title: 'Negotiate Ninja. Admin',
     canActivate: [authGuardFn],
-  },
-  {
-    path: 'invite',
-    component: PersonalInviteComponent,
-    title: 'Invite',
   },
 ];

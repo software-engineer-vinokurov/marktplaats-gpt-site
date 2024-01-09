@@ -17,7 +17,7 @@ export const appConfig: ApplicationConfig = {
       clientId: environment.clientId,
       cacheLocation: 'localstorage',
       authorizationParams: {
-        redirect_uri: window.location.origin,
+        redirect_uri: window.location.origin + '/auth-callback',
         audience: environment.audience,
       },
       httpInterceptor: {
