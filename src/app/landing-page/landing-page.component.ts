@@ -102,7 +102,9 @@ const translateSymbol = (e: HTMLElement, stopAtX: number) => {
   }
 
   const y = f(x);
+  const deg = Math.max(0, x - stopAtX);
   e.style.transform = `
     translate(${x}px, ${y}px)
+    rotate(${deg}deg)
   `;
 }
