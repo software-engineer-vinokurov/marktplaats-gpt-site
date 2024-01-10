@@ -17,7 +17,7 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class FooterComponent {
 
-  footerOpacity?: string = "opacity: 10%;";
+  dynamicStyle?: string = "opacity: 10%;";
 
   constructor(
     public dialog: MatDialog
@@ -28,7 +28,12 @@ export class FooterComponent {
     const max = document.documentElement.scrollHeight;
     const start_from = max * 0.8;
     const opacity = Math.max(0, Math.round((100 * (pos - start_from)) / (max - start_from)));
-    this.footerOpacity = `opacity: ${opacity}%;`;
+    this.dynamicStyle = `opacity: ${opacity}%;`;
+    if (opacity > 0) {
+      this.dynamicStyle = `opacity: ${opacity}%;`;
+    } else {
+      this.dynamicStyle = `visibility: hidden;`;
+    }
     // console.log(`pos: ${pos} max: ${max} footerOpacity: ${this.footerOpacity}`);
   }
 
