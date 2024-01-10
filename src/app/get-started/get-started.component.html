@@ -63,58 +63,206 @@
     Our goal? To make your online selling and buying conversations more efficient and enjoyable.
   </h1>
 
-  <h1 class="mat-headline-4"><img src="/assets/logo-150.png" width="80" style="transform: translateY(35%);"> &nbsp;
-    How It Works</h1>
-
-  <p>
-    As you engage in a chat on <a href="https://marktplaats.nl/messages" target="_blank">marktplaats.nl/messages</a>,
-    our extension seamlessly adds a "Request a Suggestion" button.
-  </p>
-  <p>
-    Simply click it, and our tool automatically sends the chat content and product description to our server.
-  </p>
-  <p>
-    Leveraging the power of ChatGPT, we generate a suggested reply tailored to your conversation. You can
-    customize this in <a [routerLink]="['/settings']">Settings > Suggestions Context</a>.
-  </p>
-
-  [Screenshots of the service on Chrome, Safari (macOS), and iOS, including a close-up of the "Request a Suggestion"
-  button]
-
-  <p></p>
   <p></p>
 
   <h1 class="mat-headline-4">Start with Our Freemium Plan</h1>
 
-  <p>
-    As a new member, you're automatically enrolled in our Freemium plan. This gives you a complimentary €1 credit every
-    week – that's about 20 suggestion requests, on us! It's our way of saying thank you for joining us on this journey.
-  </p>
+  <mat-card>
+    <mat-card-content>
+      As a new member, you're automatically enrolled in our Freemium plan. This gives you a complimentary €1 credit
+      every week – that's about 20 suggestion requests, on us! It's our way of saying thank you for joining us on this
+      journey.
+    </mat-card-content>
+  </mat-card>
 
   <p></p>
   <p></p>
 
-  <h1 class="mat-headline-4">Install Browser Extension</h1>
+  <mat-tab-group [selectedIndex]="selectedTab.value" (selectedIndexChange)="selectedTab.setValue($event)">
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <h1>Chrome</h1>
+      </ng-template>
+      <p></p>
+      <h1 class="mat-headline-4">Install Browser Extension</h1>
+      <mat-card class="centered">
+        <mat-card-content>
+          <h1 class="mat-headline-4">Download</h1>
+          <img src="/assets/logo-150.png" width="80">
+          <h1>Negotiate Ninja</h1>
+          <a href="https://chromewebstore.google.com/u/1/detail/negotiate-ninja/damneflpjofipdhbpaaikpflhgdkcfcm"
+            target="_blank"><img class="cws-badge" src="/assets/cws-medium-badge.png"></a>
+          <p>
+            Download our Negotiate Ninja extension from the <a
+              href="https://chromewebstore.google.com/u/1/detail/negotiate-ninja/damneflpjofipdhbpaaikpflhgdkcfcm"
+              target="_blank">Chrome Web Store</a>.
+            <br>
+          </p>
+        </mat-card-content>
+      </mat-card>
 
-  <h1>Chrome users</h1>
-  <p>
-    Download our Negotiate Ninja extension from the <a
-      href="https://chromewebstore.google.com/u/1/detail/negotiate-ninja/damneflpjofipdhbpaaikpflhgdkcfcm"
-      target="_blank">Chrome Web Store</a>.
+      <p></p>
+
+      <h1 class="mat-headline-4">Enable the Extension</h1>
+
+      <mat-card>
+        <mat-card-content>
+          Once you install the extension, enable it by switching-on the toggle in the Extensions window:
+          open menu Window > Extensions (or type <u>chrome://extensions</u> in the seach bar).
+          <p></p>
+          In Site access section, ensure <span class="mat-body-strong">Negotiate Ninja</span> extension has the
+          necessary access to: <u>https://link.marktplaats.nl/*</u> and <u>https://www.marktplaats.nl/*</u> sites.
+          <p></p>
+          Done!
+        </mat-card-content>
+      </mat-card>
+
+      <h1 class="mat-headline-4"><img src="/assets/logo-150.png" width="80" style="transform: translateY(35%);"> &nbsp;
+        How It Works</h1>
+
+      <mat-card>
+        <mat-card-content>
+          As you engage in a chat on <a href="https://marktplaats.nl/messages"
+            target="_blank">marktplaats.nl/messages</a>,
+          our extension seamlessly adds a 'Suggest a Reply' button.
+          <p></p>
+          [GIF of a zoom to 'Suggest a Reply' button]
+          <p></p>
+          Simply click it, and our tool automatically sends the chat content and product description to our server.
+          <p></p>
+          [GIF of a "analysis" effect to the messages]
+          <p></p>
+          Leveraging the power of ChatGPT, we generate a suggested reply tailored to your conversation. You can
+          customize this in <a [routerLink]="['/settings']">Settings > Suggestions Context</a>.
+          <p></p>
+          [GIF of a typed-in suggestion]
+          <p></p>
+          Nothing is send to your opponnent yet. The generated reply is typed into the input area, so you can
+          read it and correct if you desire to.
+          <p></p>
+          [GIF of a modification suggestion]
+          <p></p>
+          If you want, you can regenerate the suggestion by clicking the button 'Regenerate a Reply Suggestion'.
+          <p></p>
+          [Screenshot of a 'Regenerate a Reply Suggestion' button]
+          <p></p>
+          When you like the reply, you can send it the same way, as you did it originally, by clicking the 'Send'
+          button.
+          <p></p>
+          [GIF of sending a reply]
+        </mat-card-content>
+      </mat-card>
+
+    </mat-tab>
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <h1>Safari</h1>
+      </ng-template>
+      <p></p>
+      <h1 class="mat-headline-4">Install Browser Extension</h1>
+      <mat-card class="centered">
+        <mat-card-content>
+          <h1 class="mat-headline-4">Beta Test</h1>
+          <img src="/assets/logo-150.png" width="80">
+          <h1>Negotiate Ninja</h1>
+          <!-- <div class="centered">
+              <img src="/assets/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg" height="60px">
+            </div> -->
+          <p>
+            We haven't forgotten you!
+          </p>
+          <p>
+            While our release to App Store is in progress, you can still try it via <span
+              class="mat-body-strong">TestFlight</span>.
+          </p>
+          <h1><a href="https://beta.itunes.apple.com/v1/app/6475016550" target="_blank">Open Invite</a></h1>
+          <p>
+            Check your email for an exclusive invite from us.
+          </p>
+        </mat-card-content>
+      </mat-card>
+
+      <p></p>
+
+      <h1 class="mat-headline-4">Enable the Extension</h1>
+
+      <mat-card>
+        <mat-card-content>
+          Safari extension is installed via app (macOS and/or iOS).
+          <br>
+          <br>
+          Then
+          <ul>
+            <li><span class="mat-body-strong">On macOS:</span> open Safari Settings > Extensions</li>
+            <li><span class="mat-body-strong">On iOS:</span> open Settings > Safari > Extensions</li>
+          </ul>
+          Allow the <span class="mat-body-strong">Negotiate Ninja</span> extension.
+          <p></p>
+          Ensure <span class="mat-body-strong">Negotiate Ninja</span> extension has the necessary
+          permissions: allow it to access <u>marktplaats.nl</u> and <u>negotiate.ninja</u> sites.
+          <p></p>
+          Done!
+        </mat-card-content>
+      </mat-card>
+
+      <h1 class="mat-headline-4"><img src="/assets/logo-150.png" width="80" style="transform: translateY(35%);"> &nbsp;
+        How It Works</h1>
+
+      <mat-card>
+        <mat-card-content>
+          As you engage in a chat on <a href="https://marktplaats.nl/messages"
+            target="_blank">marktplaats.nl/messages</a>,
+          our extension seamlessly adds a 'Suggest a Reply' button.
+          <p></p>
+          [GIF of a zoom to 'Suggest a Reply' button]
+          <p></p>
+          Simply click it, and our tool automatically sends the chat content and product description to our server.
+          <p></p>
+          [GIF of a "analysis" effect to the messages]
+          <p></p>
+          Leveraging the power of ChatGPT, we generate a suggested reply tailored to your conversation. You can
+          customize this in <a [routerLink]="['/settings']">Settings > Suggestions Context</a>.
+          <p></p>
+          [GIF of a typed-in suggestion]
+          <p></p>
+          Nothing is send to your opponnent yet. The generated reply is typed into the input area, so you can
+          read it and correct if you desire to.
+          <p></p>
+          [GIF of a modification suggestion]
+          <p></p>
+          If you want, you can regenerate the suggestion by clicking the button 'Regenerate a Reply Suggestion'.
+          <p></p>
+          [Screenshot of a 'Regenerate a Reply Suggestion' button]
+          <p></p>
+          When you like the reply, you can send it the same way, as you did it originally, by clicking the 'Send'
+          button.
+          <p></p>
+          [GIF of sending a reply]
+        </mat-card-content>
+      </mat-card>
+
+      <p></p> <!-- NOTE: this is needed to draw the shadow of last mat-card in this mat-tab -->
+    </mat-tab>
+  </mat-tab-group>
+
+  <p></p>
+
+  <h1 class="mat-headline-4">
+    Start enhancing your online selling and buying experience today with Negotiate Ninja!
+  </h1>
+
+  <p></p>
+
+  @if (cta.includes("subscribe")) {
+  <div class="centered call-to-action-subscribe">
+    <img src="/assets/logo-150.png" width="80">
     <br>
-    <a href="https://chromewebstore.google.com/u/1/detail/negotiate-ninja/damneflpjofipdhbpaaikpflhgdkcfcm"
-      target="_blank"><img src="/assets/cws-medium-badge.png"></a>
-  </p>
+    ☞ Don't forget to subscribe to our mailing list for updates!
+    <br><br>
+    <nn-subscribe-form tags="landing"></nn-subscribe-form>
 
-  <h1>Safari users</h1>
-  <p>
-    We haven't forgotten you! While our App Store is in progress, you can still try it via TestFlight. Check your email
-    for an exclusive invite from us.
-  </p>
-
-  <p>
-    Start enhancing your online selling and buying experience today with [Service Name]!
-  </p>
+  </div>
+  }
   }
   }
 </section>

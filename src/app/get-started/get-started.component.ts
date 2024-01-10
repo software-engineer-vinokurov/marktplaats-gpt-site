@@ -1,19 +1,22 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatCardModule } from '@angular/material/card';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import { SuggestionsService, TosDialog } from 'negotiate-ninja-lib';
+import { SubscribeFormComponent, SuggestionsService, TosDialog } from 'negotiate-ninja-lib';
 import { MatButtonModule } from '@angular/material/button';
 import { RouterModule } from '@angular/router';
+import { MatTabsModule } from '@angular/material/tabs';
 
 interface UserPreferences {
   suggestions_context?: string;
   terms_accepted_at?: string;
 }
+
+type CTAType = "subscribe";
 
 @Component({
   selector: 'app-get-started',
@@ -21,12 +24,14 @@ interface UserPreferences {
   imports: [
     RouterModule,
     MatCardModule,
+    MatTabsModule,
     FormsModule,
     MatInputModule,
     MatProgressBarModule,
     ReactiveFormsModule,
     MatSlideToggleModule,
     MatButtonModule,
+    SubscribeFormComponent,
   ],
   templateUrl: './get-started.component.html',
   styleUrl: './get-started.component.css'
@@ -35,7 +40,11 @@ export class GetStartedComponent {
   public downloading: boolean = false;
   public uploading: boolean = false;
 
+  cta: CTAType = "subscribe";
+
   user_preferences: UserPreferences = {}
+
+  selectedTab = new FormControl(0);
 
   constructor(private suggestionsService: SuggestionsService, private snackBar: MatSnackBar, private _formBuilder: FormBuilder, public dialog: MatDialog) { }
 
@@ -44,6 +53,9 @@ export class GetStartedComponent {
   });
 
   ngOnInit() {
+    const isChrome = /Chrome\//i.test(window.navigator.userAgent);
+    this.selectedTab.setValue(isChrome ? 0 : 1);
+
     this.loadUserPreferences();
   }
 

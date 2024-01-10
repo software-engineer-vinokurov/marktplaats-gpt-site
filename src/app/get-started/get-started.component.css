@@ -10,3 +10,40 @@
   margin: 8px 0;
   display: block;
 }
+
+.centered {
+  text-align: center;
+}
+
+@media (max-width: 750px) {
+  .cws-badge {
+    scale: 80%;
+  }
+}
+
+.content {
+  padding-left: 20%;
+  padding-right: 20%;
+}
+
+@media (min-width: 500px) and (max-width: 1200px) {
+  .content {
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+}
+
+@media (max-width: 499px) {
+  .content {
+    padding-left: 2%;
+    padding-right: 2%;
+  }
+}
+
+.call-to-action-subscribe {
+  border: solid 12px violet;
+  border-radius: 30px;
+  padding: 30px;
+  text-align: center;
+  max-width: 300px;
+}
