@@ -1,0 +1,12 @@
+.tos-card {
+  max-width: 800px;
+}
+
+.tos-card-content-big textarea {
+  width: 100%;
+}
+
+.tos-card-form mat-slide-toggle {
+  margin: 8px 0;
+  display: block;
+}

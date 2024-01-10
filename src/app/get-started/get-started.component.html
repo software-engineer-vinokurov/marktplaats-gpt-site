@@ -1,1 +1,120 @@
-<p>get-started works!</p>
+@if (downloading) {<mat-progress-bar mode="query"></mat-progress-bar>}
+@if (uploading) {<mat-progress-bar mode="indeterminate"></mat-progress-bar>}
+<section class="content">
+
+  @if (downloading) {
+  <!-- <h2 class="mat-h2"><code>% loading</code></h2> -->
+  }
+  @else {
+  @if (!user_preferences.terms_accepted_at) {
+  <h1 class="mat-headline-2">Welcome to Negotiate Ninja!</h1>
+  <h1 class="mat-headline-3">
+    You've been signed up!
+  </h1>
+  <p>
+    Before we continue, please take a moment to accept our Terms of Service. Your privacy and
+    satisfaction are our top priorities.
+  </p>
+  <mat-card class="tos-card">
+    <mat-card-header>
+      <mat-card-title>Terms of Service</mat-card-title>
+    </mat-card-header>
+    <form class="tos-card-form" [formGroup]="formGroup" (ngSubmit)="submitTermsForm(formGroup)" ngNativeValidate>
+      <mat-card-content class="tos-card-content-big">
+        <mat-slide-toggle formControlName="acceptTerms">Accept Terms of Service</mat-slide-toggle>
+        <!-- <p>Form Group Status: {{formGroup.status}}</p> -->
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button color="default" (click)="openTermsDialog()">READ</button>
+        <button mat-button color="accent" type="submit" [disabled]="!formGroup.value.acceptTerms">SUBMIT</button>
+      </mat-card-actions>
+    </form>
+  </mat-card>
+
+  } @else {
+  <!-- 
+  <h1 class="mat-headline-1">headline-1</h1>
+  <h1 class="mat-headline-2">headline-2</h1>
+  <h1 class="mat-headline-3">headline-3</h1>
+  <h1 class="mat-headline-4">headline-4</h1>
+  <h1 class="mat-headline-5">headline-5 or h1</h1>
+  <h1 class="mat-headline-6">headline-6 or h2</h1>
+  <h1>h1</h1>
+  <h2>h2</h2>
+  <h3>h3</h3>
+  <h4>h4 or body-1</h4>
+  <div class="mat-body">body</div>
+  <div class="mat-body-strong">body-strong or subtitle-2</div>
+  <div class="mat-small">small</div>
+  <span>span</span> -->
+
+
+  <h1 class="mat-headline-1">Getting Started</h1>
+
+  <h1 class="mat-headline-2">Exciting News!</h1>
+
+  <h1 class="mat-headline-4">
+    Negotiate Ninja is currently in its beta, exclusively enhancing your experience on
+    <a href="https://marktplaats.nl/messages" target="_blank">marktplaats.nl/messages</a>. Our smart browser extension
+    is compatible with Chrome and Safari (macOS and iOS)!
+  </h1>
+
+  <h1>
+    Our goal? To make your online selling and buying conversations more efficient and enjoyable.
+  </h1>
+
+  <h1 class="mat-headline-4"><img src="/assets/logo-150.png" width="80" style="transform: translateY(35%);"> &nbsp;
+    How It Works</h1>
+
+  <p>
+    As you engage in a chat on <a href="https://marktplaats.nl/messages" target="_blank">marktplaats.nl/messages</a>,
+    our extension seamlessly adds a "Request a Suggestion" button.
+  </p>
+  <p>
+    Simply click it, and our tool automatically sends the chat content and product description to our server.
+  </p>
+  <p>
+    Leveraging the power of ChatGPT, we generate a suggested reply tailored to your conversation. You can
+    customize this in <a [routerLink]="['/settings']">Settings > Suggestions Context</a>.
+  </p>
+
+  [Screenshots of the service on Chrome, Safari (macOS), and iOS, including a close-up of the "Request a Suggestion"
+  button]
+
+  <p></p>
+  <p></p>
+
+  <h1 class="mat-headline-4">Start with Our Freemium Plan</h1>
+
+  <p>
+    As a new member, you're automatically enrolled in our Freemium plan. This gives you a complimentary €1 credit every
+    week – that's about 20 suggestion requests, on us! It's our way of saying thank you for joining us on this journey.
+  </p>
+
+  <p></p>
+  <p></p>
+
+  <h1 class="mat-headline-4">Install Browser Extension</h1>
+
+  <h1>Chrome users</h1>
+  <p>
+    Download our Negotiate Ninja extension from the <a
+      href="https://chromewebstore.google.com/u/1/detail/negotiate-ninja/damneflpjofipdhbpaaikpflhgdkcfcm"
+      target="_blank">Chrome Web Store</a>.
+    <br>
+    <a href="https://chromewebstore.google.com/u/1/detail/negotiate-ninja/damneflpjofipdhbpaaikpflhgdkcfcm"
+      target="_blank"><img src="/assets/cws-medium-badge.png"></a>
+  </p>
+
+  <h1>Safari users</h1>
+  <p>
+    We haven't forgotten you! While our App Store is in progress, you can still try it via TestFlight. Check your email
+    for an exclusive invite from us.
+  </p>
+
+  <p>
+    Start enhancing your online selling and buying experience today with [Service Name]!
+  </p>
+  }
+  }
+</section>
