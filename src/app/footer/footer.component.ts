@@ -26,7 +26,9 @@ export class FooterComponent {
   recalcOpacity() {
     const pos = (document.documentElement.scrollTop || document.body.scrollTop) + document.documentElement.offsetHeight;
     const max = document.documentElement.scrollHeight;
-    this.footerOpacity = `opacity: ${Math.round((100 * pos) / max)}%;`;
+    const start_from = max * 0.8;
+    const opacity = Math.max(0, Math.round((100 * (pos - start_from)) / (max - start_from)));
+    this.footerOpacity = `opacity: ${opacity}%;`;
     // console.log(`pos: ${pos} max: ${max} footerOpacity: ${this.footerOpacity}`);
   }
 
