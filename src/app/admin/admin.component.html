@@ -2,7 +2,9 @@
 <mat-progress-bar mode="indeterminate" *ngIf="uploading"></mat-progress-bar>
 
 <div class="content">
-  <h2 class="mat-h2">Invite</h2>
+  <h1 class="mat-headline-4">Admin Dashboard</h1>
+
+  <h1>Invite</h1>
 
   <form class="invite-form">
     <mat-form-field class="invite-full-width">
@@ -20,8 +22,8 @@
   <button mat-button color="warn" (click)="onInvite()">CREATE USER & INVITE LINK</button>
 
   @if (inviteResponse?.["invite_link"]) {
-  <h1 class="mat-h1">Invite page:</h1>
-  <h2 class="mat-h1">(safe to open) <a [href]="inviteResponse?.invite_link">{{inviteResponse?.invite_link}}</a></h2>
+  <h1>Invite page:</h1>
+  <h2>(safe to open) <a [href]="inviteResponse?.invite_link">{{inviteResponse?.invite_link}}</a></h2>
   }
 
   <p>

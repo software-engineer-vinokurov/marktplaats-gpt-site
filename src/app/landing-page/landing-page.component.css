@@ -13,6 +13,7 @@
 .landing-page-content {
   padding-left: 20%;
   padding-right: 20%;
+  padding-top: 140px;
   border: solid 1px var(--debug-color);
   border-radius: 0px;
   min-height: 100vh;
@@ -65,11 +66,6 @@
   color: white;
 }
 
-h1,
-h2 {
-  font-weight: bold;
-}
-
 h1 {
   font-size: 3rem;
   margin-top: 10vh;
@@ -89,14 +85,44 @@ p {
   font-size: 1.8rem;
 }
 
+strong.mat-body-strong {
+  font-size: 1.8rem;
+}
+
+.freemium-credit {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: black;
+  border: solid 6px gold;
+  background: goldenrod;
+  border-radius: 50px;
+  padding-left: 7px;
+  padding-right: 7px;
+  padding-top: 2px;
+  padding-bottom: 6px;
+}
+
+.browser-symbol {
+  position: absolute;
+  /* Positions the element absolutely within its relative container */
+  left: 0;
+  /* Aligns the element to the left edge of the container */
+
+  z-index: -1;
+}
+
+.browser-title {
+  padding-left: 60px;
+}
+
 ul {
   font-size: 1.8rem;
   margin-top: 0vh;
-  line-height: 1.4;
+  line-height: 1.2;
 }
 
 li {
-  margin-top: 1vh;
+  margin-top: 2vh;
 }
 
 q {
@@ -118,7 +144,7 @@ q {
 }
 
 .call-to-action {
-  border: solid 4px red;
+  border: solid 12px red;
   border-radius: 30px;
   padding: 30px;
 }
@@ -167,7 +193,9 @@ q {
   .landing-page-content {
     padding-left: 5%;
     padding-right: 5%;
+    padding-top: 50px;
     width: 90vw;
+
     /* Prevent horizontal scroll */
   }
 }
@@ -180,6 +208,7 @@ q {
   .landing-page-content {
     padding-left: 0%;
     padding-right: 0%;
+    padding-top: 50px;
     width: 100vw;
     /* Prevent horizontal scroll */
   }

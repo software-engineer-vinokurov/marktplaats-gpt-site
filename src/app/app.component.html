@@ -15,6 +15,10 @@
         </button>
         }
       </div>
+      <button mat-menu-item aria-label="get started button" [routerLink]="['/get-started']">
+        <mat-icon>start</mat-icon>
+        <span>Get Started</span>
+      </button>
       <button mat-menu-item aria-label="balance button" [routerLink]="['/balance']">
         <mat-icon>money</mat-icon>
         <span>Balance</span>
@@ -45,7 +49,7 @@
     </div>
   </mat-menu>
   <div [routerLink]="['/']">
-    <span>Negotiate Ninja</span>
+    <span class="toolbar-brand">Negotiate Ninja</span>
   </div>
   <span class="toolbar-spacer"></span>
   <div *ngIf="!(auth.isAuthenticated$ | async)">

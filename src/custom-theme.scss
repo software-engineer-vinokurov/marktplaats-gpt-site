@@ -11,7 +11,21 @@
 @import './fonts.scss';
 
 $my-typography: mat.define-typography-config($font-family: 'Barlow, sans-serif',
+    $headline-1: mat.define-typography-level(112px, 112px, 300, $letter-spacing: -0.05em),
+    $headline-2: mat.define-typography-level(56px, 56px, 400, $letter-spacing: -0.02em),
+    $headline-3: mat.define-typography-level(45px, 48px, 400, $letter-spacing: -0.005em),
+    $headline-4: mat.define-typography-level(34px, 40px, 400),
+    $headline-5: mat.define-typography-level(24px, 42px, 400), // Section heading corresponding to the <h1> tag.
+    $headline-6: mat.define-typography-level(20px, 20px, 400), // Section heading corresponding to the <h2> tag.
+    $subtitle-1: mat.define-typography-level(18px, 18px, 400), // Section heading corresponding to the <h3> tag.
+    $body-1: mat.define-typography-level(20px, 20px, 400), // Base body text. Corresponding to the <h4> tag.
+    $subtitle-2: mat.define-typography-level(18px, 18px, 500), // mat-body-strong
+    $body-2: mat.define-typography-level(18px, 26px, 400), // Secondary body text.
+    $caption: mat.define-typography-level(16px, 16px, 400), // Smaller body and hint text.
+    $button: mat.define-typography-level(16px, 16px, 400), // Buttons and anchors.
   );
+
+@include mat.typography-hierarchy($my-typography);
 
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
@@ -50,4 +64,17 @@ $dark-theme: mat.define-dark-theme((color: (primary: mat.define-palette(mat.$pin
   // Use the `-color` mixins to only apply color styles without reapplying the same
   // typography and density styles.
   @include mat.all-component-colors($dark-theme);
+}
+
+// Workaround for the theming <a> tag
+a {
+  color: var(--mat-option-selected-state-label-text-color); // primary
+}
+
+a:visited {
+  color: var(--mdc-checkbox-selected-icon-color); // accent
+}
+
+a:hover {
+  color: var(--mat-menu-item-label-text-color); // basic
 }
