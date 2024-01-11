@@ -3,7 +3,16 @@
 <section class="content">
 
   @if (downloading) {
-  <!-- <h2 class="mat-h2"><code>% loading</code></h2> -->
+  <h1 class="mat-headline-1">
+    @if (loadingTime < expLoadingTime) { <span>Loading in {{
+      countDown() }}</span>
+      } @else {
+      <span>🙈 Maybe refreshing a page is not a bad idea anymore</span>
+      }
+  </h1>
+  <div class="centered">
+    <img #loadingLogoRef class="loading-logo" alt="Negotiate Ninja logo" src="/assets/logo-150.png">
+  </div>
   }
   @else {
   @if (!user_preferences.terms_accepted_at) {
@@ -55,7 +64,8 @@
 
   <h1 class="mat-headline-4">
     Negotiate Ninja is currently in its beta, exclusively enhancing your experience on
-    <a href="https://marktplaats.nl/messages" target="_blank">marktplaats.nl/messages</a>. Our smart browser extension
+    <a href="https://marktplaats.nl/messages" target="_blank">marktplaats.nl/messages</a>. Our smart browser
+    extension
     is compatible with Chrome and Safari (macOS and iOS)!
   </h1>
 
@@ -70,7 +80,8 @@
   <mat-card>
     <mat-card-content>
       As a new member, you're automatically enrolled in our Freemium plan. This gives you a complimentary €1 credit
-      every week – that's about 20 suggestion requests, on us! It's our way of saying thank you for joining us on this
+      every week – that's about 20 suggestion requests, on us! It's our way of saying thank you for joining us on
+      this
       journey.
     </mat-card-content>
   </mat-card>
@@ -117,7 +128,8 @@
         </mat-card-content>
       </mat-card>
 
-      <h1 class="mat-headline-4"><img src="/assets/logo-150.png" width="80" style="transform: translateY(35%);"> &nbsp;
+      <h1 class="mat-headline-4"><img src="/assets/logo-150.png" width="80" style="transform: translateY(35%);">
+        &nbsp;
         How It Works</h1>
 
       <mat-card>
@@ -205,7 +217,8 @@
         </mat-card-content>
       </mat-card>
 
-      <h1 class="mat-headline-4"><img src="/assets/logo-150.png" width="80" style="transform: translateY(35%);"> &nbsp;
+      <h1 class="mat-headline-4"><img src="/assets/logo-150.png" width="80" style="transform: translateY(35%);">
+        &nbsp;
         How It Works</h1>
 
       <mat-card>

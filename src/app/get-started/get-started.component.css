@@ -47,3 +47,14 @@
   text-align: center;
   max-width: 300px;
 }
+
+.loading-logo {
+  position: absolute;
+  /* Positions the element absolutely within its relative container */
+  left: 0px;
+  /* Aligns the element to the left edge of the container */
+
+  visibility: hidden;
+
+  z-index: -1;
+}

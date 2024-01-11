@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
@@ -46,6 +46,11 @@ export class GetStartedComponent {
 
   selectedTab = new FormControl(0);
 
+  loadingTime = 0;
+  expLoadingTime = 9; // seconds
+
+  @ViewChild('loadingLogoRef', { static: false }) loadingLogoRef!: ElementRef;
+
   constructor(private suggestionsService: SuggestionsService, private snackBar: MatSnackBar, private _formBuilder: FormBuilder, public dialog: MatDialog) { }
 
   formGroup = this._formBuilder.group({
@@ -57,6 +62,59 @@ export class GetStartedComponent {
     this.selectedTab.setValue(isChrome ? 0 : 1);
 
     this.loadUserPreferences();
+  }
+
+  ngAfterViewInit() {
+    setTimeout(() => {
+      this.loadingTime = 0;
+      this.animateLoadingLogo(Date.now());
+    }, 100);
+  }
+
+  countDown() {
+    const digits = "0️⃣,1️⃣,2️⃣,3️⃣,4️⃣,5️⃣,6️⃣,7️⃣,🎱,9️⃣".split(',');
+    return digits[this.expLoadingTime - this.loadingTime];
+  }
+
+  animateLoadingLogo(startedAt: number) {
+    if (this.downloading) {
+      const e = this.loadingLogoRef.nativeElement as HTMLElement;
+
+      e.style.transform = `
+        translate(0,0)
+      `;
+
+      const now = Date.now();
+      this.loadingTime = Math.round((now - startedAt) / 1000);
+
+      const overlayCoeff = 2;
+      const hideDelta = e.getBoundingClientRect().width * overlayCoeff;
+
+      const speed = (document.documentElement.offsetWidth + hideDelta) / this.expLoadingTime / 1000; // screen width in expLoadingTime seconds, (px/ms)
+      const traveledDistance = speed * (now - startedAt);
+
+      const x = traveledDistance % (document.documentElement.offsetWidth * overlayCoeff) - hideDelta;
+
+      function f(x: number): number {
+        const scaleX = document.documentElement.offsetWidth / 20; // 20 small oscillations for whole width of screen
+        const scaleY = 80 * Math.sin(Math.PI * x / document.documentElement.offsetWidth); // one big oscillation with max at center of the screen
+        return scaleY * Math.cos(traveledDistance / scaleX);
+      }
+
+      const y = f(x);
+      const deg = traveledDistance;
+      e.style.transform = `
+        translate(${x}px, ${y}px)
+        rotate(-${deg}deg)
+      `;
+      e.style.visibility = 'visible';
+
+      // console.log(e.style.transform);
+
+      setTimeout(() => {
+        this.animateLoadingLogo(startedAt);
+      }, 60);
+    }
   }
 
   openTermsDialog() {
