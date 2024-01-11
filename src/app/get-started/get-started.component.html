@@ -128,43 +128,7 @@
         </mat-card-content>
       </mat-card>
 
-      <h1 class="mat-headline-4"><img src="/assets/logo-150.png" width="80" style="transform: translateY(35%);">
-        &nbsp;
-        How It Works</h1>
-
-      <mat-card>
-        <mat-card-content>
-          As you engage in a chat on <a href="https://marktplaats.nl/messages"
-            target="_blank">marktplaats.nl/messages</a>,
-          our extension seamlessly adds a 'Suggest a Reply' button.
-          <p></p>
-          [GIF of a zoom to 'Suggest a Reply' button]
-          <p></p>
-          Simply click it, and our tool automatically sends the chat content and product description to our server.
-          <p></p>
-          [GIF of a "analysis" effect to the messages]
-          <p></p>
-          Leveraging the power of ChatGPT, we generate a suggested reply tailored to your conversation. You can
-          customize this in <a [routerLink]="['/settings']">Settings > Suggestions Context</a>.
-          <p></p>
-          [GIF of a typed-in suggestion]
-          <p></p>
-          Nothing is send to your opponnent yet. The generated reply is typed into the input area, so you can
-          read it and correct if you desire to.
-          <p></p>
-          [GIF of a modification suggestion]
-          <p></p>
-          If you want, you can regenerate the suggestion by clicking the button 'Regenerate a Reply Suggestion'.
-          <p></p>
-          [Screenshot of a 'Regenerate a Reply Suggestion' button]
-          <p></p>
-          When you like the reply, you can send it the same way, as you did it originally, by clicking the 'Send'
-          button.
-          <p></p>
-          [GIF of sending a reply]
-        </mat-card-content>
-      </mat-card>
-
+      <p></p> <!-- NOTE: this is needed to draw the shadow of last mat-card in this mat-tab -->
     </mat-tab>
     <mat-tab>
       <ng-template mat-tab-label>
@@ -217,46 +181,67 @@
         </mat-card-content>
       </mat-card>
 
-      <h1 class="mat-headline-4"><img src="/assets/logo-150.png" width="80" style="transform: translateY(35%);">
-        &nbsp;
-        How It Works</h1>
-
-      <mat-card>
-        <mat-card-content>
-          As you engage in a chat on <a href="https://marktplaats.nl/messages"
-            target="_blank">marktplaats.nl/messages</a>,
-          our extension seamlessly adds a 'Suggest a Reply' button.
-          <p></p>
-          [GIF of a zoom to 'Suggest a Reply' button]
-          <p></p>
-          Simply click it, and our tool automatically sends the chat content and product description to our server.
-          <p></p>
-          [GIF of a "analysis" effect to the messages]
-          <p></p>
-          Leveraging the power of ChatGPT, we generate a suggested reply tailored to your conversation. You can
-          customize this in <a [routerLink]="['/settings']">Settings > Suggestions Context</a>.
-          <p></p>
-          [GIF of a typed-in suggestion]
-          <p></p>
-          Nothing is send to your opponnent yet. The generated reply is typed into the input area, so you can
-          read it and correct if you desire to.
-          <p></p>
-          [GIF of a modification suggestion]
-          <p></p>
-          If you want, you can regenerate the suggestion by clicking the button 'Regenerate a Reply Suggestion'.
-          <p></p>
-          [Screenshot of a 'Regenerate a Reply Suggestion' button]
-          <p></p>
-          When you like the reply, you can send it the same way, as you did it originally, by clicking the 'Send'
-          button.
-          <p></p>
-          [GIF of sending a reply]
-        </mat-card-content>
-      </mat-card>
-
       <p></p> <!-- NOTE: this is needed to draw the shadow of last mat-card in this mat-tab -->
     </mat-tab>
   </mat-tab-group>
+
+  <p></p>
+
+  <h1 class="mat-headline-4"><img src="/assets/logo-150.png" width="80" style="transform: translateY(35%);">
+    &nbsp;
+    How It Works</h1>
+
+  <mat-card>
+    <mat-card-content>
+      As you engage in a chat on <a href="https://marktplaats.nl/messages" target="_blank">marktplaats.nl/messages</a>,
+      our extension seamlessly adds a 'Suggest a Reply' button.
+      <p></p>
+      <div class="centered">
+        <img class="how-it-works-gif"
+          src="/assets/get-started/Get Started - Enter in conversation and zoom to Suggest a Reply button.gif"
+          alt="Enter in conversation and zoom to Suggest a Reply button">
+      </div>
+      <p></p>
+      Simply click it, and our tool automatically sends the chat content and product description to our server.
+      <p></p>
+      <div class="centered">
+        <img class="how-it-works-gif"
+          src="/assets/get-started/Get Started - Clicking Suggest a Reply button and showing analysis effect.gif"
+          alt="Clicking Suggest a Reply button and showing analysis effect">
+      </div>
+      <p></p>
+      Leveraging the power of ChatGPT, we generate a suggested reply tailored to your conversation. You can
+      customise this in <a [routerLink]="['/settings']">Settings > Suggestions Context</a>.
+      <p></p>
+      <div class="centered">
+        <img class="how-it-works-gif" src="/assets/get-started/Get Started - Сustomising in Settings.gif"
+          alt="Сustomising in Settings">
+      </div>
+      <p></p>
+      Nothing is send to your opponent yet. The generated reply is typed into the input area, so you can
+      read it and correct if you desire to.
+      <p></p>
+      <div class="centered">
+        <img class="how-it-works-gif" src="/assets/get-started/Get Started - Typed-in suggestion.gif"
+          alt="Typed-in suggestion">
+      </div>
+      <p></p>
+      If you want, you can regenerate the suggestion by clicking the button 'Regenerate a Reply Suggestion'.
+      <p></p>
+      <div class="centered">
+        <img class="how-it-works-gif" src="/assets/get-started/Get Started - Regenerate a Reply Suggestion.gif"
+          alt="Regenerate a Reply Suggestion">
+      </div>
+      <p></p>
+      When you like the reply, you can send it the same way, as you did it originally, by clicking the 'Send'
+      button.
+      <p></p>
+      <div class="centered">
+        <img class="how-it-works-gif" src="/assets/get-started/Get Started - Sending a reply.gif" alt="Sending a reply">
+      </div>
+      Profit!
+    </mat-card-content>
+  </mat-card>
 
   <p></p>
 
