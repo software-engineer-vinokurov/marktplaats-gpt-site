@@ -72,23 +72,15 @@
       {{'&nbsp;&nbsp;'}}
     </div>
   </div>
-  <div *ngIf="!(auth.isAuthenticated$ | async)">
-    <button mat-icon-button class="icon" aria-label="icon-button with menu icon" [matMenuTriggerFor]="menu">
-      <mat-icon>menu</mat-icon>
-    </button>
-  </div>
   <div *ngIf="auth.user$ | async as user">
-    <button mat-fab extended aria-label="icon-button with user picture and menu action" color="default"
+    <button mat-icon-button disabled class="icon" aria-label="icon-button with user profile picture"
       [matMenuTriggerFor]="menu">
-      <mat-icon>menu</mat-icon>
-      {{'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'}}
-      <img src="{{ user.picture }}" class="user-picture-in-button">
-    </button>
-
-    <!-- <button mat-icon-button class="icon" aria-label="icon-button with user profile picture" [matMenuTriggerFor]="menu">
       <img src="{{ user.picture }}" class="user-picture">
-    </button> -->
+    </button>
   </div>
+  <button mat-icon-button class="icon" aria-label="icon-button with menu icon" [matMenuTriggerFor]="menu">
+    <mat-icon>menu</mat-icon>
+  </button>
 </mat-toolbar>
 <router-outlet></router-outlet>
 <app-footer></app-footer>
