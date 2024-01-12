@@ -205,8 +205,11 @@
             </mat-tab>
           </mat-tab-group>
           <div class="centered">
-            <span class="mat-body-strong">🎯 Done! 🎯</span>
+            🎯 <span class="mat-body-strong">Done!</span> 🎯
           </div>
+          <p></p>
+          You can go to <a href="https://marktplaats.nl/messages" target="_blank">marktplaats.nl/messages</a> now, and
+          come back here if you have questions.
         </mat-card-content>
       </mat-card>
 
@@ -232,7 +235,8 @@
       our extension seamlessly adds a 'Suggest a Reply' button.
       <p></p>
       <div class="centered">
-        <button mat-icon-button aria-label="Go next button" matStepperNext><mat-icon>arrow_forward</mat-icon></button>
+        <button mat-fab color="primary" aria-label="Go next button"
+          matStepperNext><mat-icon>arrow_forward</mat-icon></button>
       </div>
     </mat-step>
     <mat-step>
@@ -245,9 +249,11 @@
       Simply click it, and our tool automatically sends the chat content and product description to our server.
       <p></p>
       <div class="centered">
-        <button mat-icon-button aria-label="Go back button"
+        <button mat-fab color="primary" aria-label="Go back button"
           matStepperPrevious><mat-icon>arrow_backward</mat-icon></button>
-        <button mat-icon-button aria-label="Go next button" matStepperNext><mat-icon>arrow_forward</mat-icon></button>
+        <button mat-fab color="primary" disabled style="visibility: hidden;" aria-label="Hidden button"></button>
+        <button mat-fab color="primary" aria-label="Go next button"
+          matStepperNext><mat-icon>arrow_forward</mat-icon></button>
       </div>
     </mat-step>
     <mat-step>
@@ -260,9 +266,11 @@
       customise this in <a [routerLink]="['/settings']">Settings > Suggestions Context</a>.
       <p></p>
       <div class="centered">
-        <button mat-icon-button aria-label="Go back button"
+        <button mat-fab color="primary" aria-label="Go back button"
           matStepperPrevious><mat-icon>arrow_backward</mat-icon></button>
-        <button mat-icon-button aria-label="Go next button" matStepperNext><mat-icon>arrow_forward</mat-icon></button>
+        <button mat-fab color="primary" disabled style="visibility: hidden;" aria-label="Hidden button"></button>
+        <button mat-fab color="primary" aria-label="Go next button"
+          matStepperNext><mat-icon>arrow_forward</mat-icon></button>
       </div>
     </mat-step>
     <mat-step>
@@ -275,9 +283,11 @@
       read it and correct if you desire to.
       <p></p>
       <div class="centered">
-        <button mat-icon-button aria-label="Go back button"
+        <button mat-fab color="primary" aria-label="Go back button"
           matStepperPrevious><mat-icon>arrow_backward</mat-icon></button>
-        <button mat-icon-button aria-label="Go next button" matStepperNext><mat-icon>arrow_forward</mat-icon></button>
+        <button mat-fab color="primary" disabled style="visibility: hidden;" aria-label="Hidden button"></button>
+        <button mat-fab color="primary" aria-label="Go next button"
+          matStepperNext><mat-icon>arrow_forward</mat-icon></button>
       </div>
     </mat-step>
     <mat-step>
@@ -289,9 +299,11 @@
       If you want, you can regenerate the suggestion by clicking the button 'Regenerate a Reply Suggestion'.
       <p></p>
       <div class="centered">
-        <button mat-icon-button aria-label="Go back button"
+        <button mat-fab color="primary" aria-label="Go back button"
           matStepperPrevious><mat-icon>arrow_backward</mat-icon></button>
-        <button mat-icon-button aria-label="Go next button" matStepperNext><mat-icon>arrow_forward</mat-icon></button>
+        <button mat-fab color="primary" disabled style="visibility: hidden;" aria-label="Hidden button"></button>
+        <button mat-fab color="primary" aria-label="Go next button"
+          matStepperNext><mat-icon>arrow_forward</mat-icon></button>
       </div>
     </mat-step>
     <mat-step>
@@ -303,7 +315,7 @@
       button. <span class="mat-body-strong">🥇 Profit! 🥇</span>
       <p></p>
       <div class="centered">
-        <button mat-icon-button aria-label="Go back button"
+        <button mat-fab color="primary" aria-label="Go back button"
           matStepperPrevious><mat-icon>arrow_backward</mat-icon></button>
       </div>
     </mat-step>
