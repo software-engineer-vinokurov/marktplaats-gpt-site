@@ -10,6 +10,8 @@ import { SubscribeFormComponent, SuggestionsService, TosDialog } from 'negotiate
 import { MatButtonModule } from '@angular/material/button';
 import { RouterModule } from '@angular/router';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatStepperModule } from '@angular/material/stepper';
+import { MatIconModule } from '@angular/material/icon';
 
 interface UserPreferences {
   suggestions_context?: string;
@@ -31,6 +33,8 @@ type CTAType = "subscribe";
     ReactiveFormsModule,
     MatSlideToggleModule,
     MatButtonModule,
+    MatStepperModule,
+    MatIconModule,
     SubscribeFormComponent,
   ],
   templateUrl: './get-started.component.html',

@@ -220,116 +220,94 @@
     &nbsp;
     How It Works</h1>
 
-  <mat-card>
-    <mat-card-header>
-      <mat-card-title>
-        As you engage in a chat on <a href="https://marktplaats.nl/messages"
-          target="_blank">marktplaats.nl/messages</a>,
-        our extension seamlessly adds a 'Suggest a Reply' button.
-      </mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-      <p></p>
+  <mat-stepper orientation="horizontal" labelPosition="bottom" headerPosition="top" #stepper>
+    <mat-step>
       <div class="centered">
         <img class="how-it-works-gif"
           src="/assets/get-started/Get Started - Enter in conversation and zoom to Suggest a Reply button.gif"
           alt="Enter in conversation and zoom to Suggest a Reply button">
       </div>
-    </mat-card-content>
-  </mat-card>
-
-  <p></p>
-
-  <mat-card>
-    <mat-card-header>
-      <mat-card-title>
-        Simply click it, and our tool automatically sends the chat content and product description to our server.
-      </mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
       <p></p>
+      As you engage in a chat on <a href="https://marktplaats.nl/messages" target="_blank">marktplaats.nl/messages</a>,
+      our extension seamlessly adds a 'Suggest a Reply' button.
+      <p></p>
+      <div class="centered">
+        <button mat-icon-button aria-label="Go next button" matStepperNext><mat-icon>arrow_forward</mat-icon></button>
+      </div>
+    </mat-step>
+    <mat-step>
       <div class="centered">
         <img class="how-it-works-gif"
           src="/assets/get-started/Get Started - Clicking Suggest a Reply button and showing analysis effect.gif"
           alt="Clicking Suggest a Reply button and showing analysis effect">
       </div>
-    </mat-card-content>
-  </mat-card>
-
-  <p></p>
-
-  <mat-card>
-    <mat-card-header>
-      <mat-card-title>
-        Leveraging the power of ChatGPT, we generate a suggested reply tailored to your conversation. You can
-        customise this in <a [routerLink]="['/settings']">Settings > Suggestions Context</a>.
-      </mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
       <p></p>
+      Simply click it, and our tool automatically sends the chat content and product description to our server.
+      <p></p>
+      <div class="centered">
+        <button mat-icon-button aria-label="Go back button"
+          matStepperPrevious><mat-icon>arrow_backward</mat-icon></button>
+        <button mat-icon-button aria-label="Go next button" matStepperNext><mat-icon>arrow_forward</mat-icon></button>
+      </div>
+    </mat-step>
+    <mat-step>
       <div class="centered">
         <img class="how-it-works-gif" src="/assets/get-started/Get Started - Сustomising in Settings.gif"
           alt="Сustomising in Settings">
       </div>
-    </mat-card-content>
-  </mat-card>
-
-  <p></p>
-
-  <mat-card>
-    <mat-card-header>
-      <mat-card-title>
-        Nothing is send to your opponent yet. The generated reply is typed into the input area, so you can
-        read it and correct if you desire to.
-      </mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
       <p></p>
+      Leveraging the power of ChatGPT, we generate a suggested reply tailored to your conversation. You can
+      customise this in <a [routerLink]="['/settings']">Settings > Suggestions Context</a>.
+      <p></p>
+      <div class="centered">
+        <button mat-icon-button aria-label="Go back button"
+          matStepperPrevious><mat-icon>arrow_backward</mat-icon></button>
+        <button mat-icon-button aria-label="Go next button" matStepperNext><mat-icon>arrow_forward</mat-icon></button>
+      </div>
+    </mat-step>
+    <mat-step>
       <div class="centered">
         <img class="how-it-works-gif" src="/assets/get-started/Get Started - Typed-in suggestion.gif"
           alt="Typed-in suggestion">
       </div>
-    </mat-card-content>
-  </mat-card>
-
-  <p></p>
-
-  <mat-card>
-    <mat-card-header>
-      <mat-card-title>
-        If you want, you can regenerate the suggestion by clicking the button 'Regenerate a Reply Suggestion'.
-      </mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
       <p></p>
+      Nothing is send to your opponent yet. The generated reply is typed into the input area, so you can
+      read it and correct if you desire to.
+      <p></p>
+      <div class="centered">
+        <button mat-icon-button aria-label="Go back button"
+          matStepperPrevious><mat-icon>arrow_backward</mat-icon></button>
+        <button mat-icon-button aria-label="Go next button" matStepperNext><mat-icon>arrow_forward</mat-icon></button>
+      </div>
+    </mat-step>
+    <mat-step>
       <div class="centered">
         <img class="how-it-works-gif" src="/assets/get-started/Get Started - Regenerate a Reply Suggestion.gif"
           alt="Regenerate a Reply Suggestion">
       </div>
-    </mat-card-content>
-  </mat-card>
-
-  <p></p>
-
-  <mat-card>
-    <mat-card-header>
-      <mat-card-title>
-        When you like the reply, you can send it the same way, as you did it originally, by clicking the 'Send'
-        button.
-      </mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
       <p></p>
+      If you want, you can regenerate the suggestion by clicking the button 'Regenerate a Reply Suggestion'.
+      <p></p>
+      <div class="centered">
+        <button mat-icon-button aria-label="Go back button"
+          matStepperPrevious><mat-icon>arrow_backward</mat-icon></button>
+        <button mat-icon-button aria-label="Go next button" matStepperNext><mat-icon>arrow_forward</mat-icon></button>
+      </div>
+    </mat-step>
+    <mat-step>
       <div class="centered">
         <img class="how-it-works-gif" src="/assets/get-started/Get Started - Sending a reply.gif" alt="Sending a reply">
       </div>
-
+      <p></p>
+      When you like the reply, you can send it the same way, as you did it originally, by clicking the 'Send'
+      button. <span class="mat-body-strong">🥇 Profit! 🥇</span>
       <p></p>
       <div class="centered">
-        <span class="mat-body-strong">🥇 Profit! 🥇</span>
+        <button mat-icon-button aria-label="Go back button"
+          matStepperPrevious><mat-icon>arrow_backward</mat-icon></button>
       </div>
-    </mat-card-content>
-  </mat-card>
+    </mat-step>
+  </mat-stepper>
 
   <p></p>
 
