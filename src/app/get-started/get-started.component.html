@@ -64,8 +64,8 @@
 
   <h1 class="mat-headline-4">
     Negotiate Ninja is currently in its beta, exclusively enhancing your experience on
-    <a href="https://marktplaats.nl/messages" target="_blank">marktplaats.nl/messages</a>. Our smart browser
-    extension is compatible with Chrome and Safari (macOS and iOS)!
+    <a href="https://marktplaats.nl/messages" target="_blank">marktplaats.nl/messages.</a>
+    Our smart browser extension is compatible with Chrome and Safari (macOS and iOS)!
   </h1>
 
   <h1>
@@ -167,21 +167,46 @@
           installed via companion app).
           <br>
           <br>
-          Then
-          <ul>
-            <li>If you are on a <span class="mat-body-strong">Mac:</span> in Safari press <span
-                class="mat-body-strong">⌘,</span>
-              or go to menu <span class="mat-body-strong">Safari > Settings... > Extensions</span></li>
-            <li>For <span class="mat-body-strong">iPhone/iPad:</span> open <span class="mat-body-strong">Settings
-                app</span>
-              and then go to <span class="mat-body-strong">Safari > Extensions</span></li>
-          </ul>
-          Allow the <span class="mat-body-strong">Negotiate Ninja</span> extension.
-          <p></p>
-          Ensure <span class="mat-body-strong">Negotiate Ninja</span> extension has the necessary
-          permissions: allow it to access <u>marktplaats.nl</u> and <u>negotiate.ninja</u> sites.
-          <p></p>
-          Done!
+          <mat-tab-group [selectedIndex]="selectedMacosIosTab.value"
+            (selectedIndexChange)="selectedMacosIosTab.setValue($event)">
+            <mat-tab>
+              <ng-template mat-tab-label>
+                <h2>Mac</h2>
+              </ng-template>
+              <p></p>
+              In Safari press <span class="mat-body-strong">⌘,</span>
+              or go to menu <span class="mat-body-strong">Safari > Settings... > Extensions</span>. Then turn on the
+              <span class="mat-body-strong">Negotiate Ninja</span> extension. And in <span class="mat-body-strong">Edit
+                Websites...</span>
+              for both <u>marktplaats.nl</u> and <u>negotiate.ninja</u> sites choose <span
+                class="mat-body-strong">Allow</span>.
+              <div class="centered">
+                <img id="Safari-Settings-Extensions-png" src="/assets/get-started/Safari Settings - Extensions.png"
+                  alt="Safari Settings - Extensions">
+              </div>
+            </mat-tab>
+            <mat-tab>
+              <ng-template mat-tab-label>
+                <h2>iPhone & iPad</h2>
+              </ng-template>
+              <p></p>
+              Open <span class="mat-body-strong">Settings app</span>
+              and then go to <span class="mat-body-strong">Safari > Extensions > Negotiate Ninja</span>. Then turn on
+              the <span class="mat-body-strong">Allow Extension</span> option.
+              And ensure <span class="mat-body-strong">Permissions</span> are set to <span
+                class="mat-body-strong">Allow</span> for <u>marktplaats.nl</u> and <u>negotiate.ninja</u>
+              sites.
+              <div class="centered">
+                <img id="iPhone-Settings-Safari-Extensions-Negotiate-Ninja-png"
+                  src="/assets/get-started/iPhone Settings - Safari - Extensions - Negotiate Ninja - 0.5x.png"
+                  alt="iPhone Settings - Safari - Extensions - Negotiate Ninja">
+              </div>
+
+            </mat-tab>
+          </mat-tab-group>
+          <div class="centered">
+            <span class="mat-body-strong">🎯 Done! 🎯</span>
+          </div>
         </mat-card-content>
       </mat-card>
 

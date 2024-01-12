@@ -45,6 +45,7 @@ export class GetStartedComponent {
   user_preferences: UserPreferences = {}
 
   selectedTab = new FormControl(0);
+  selectedMacosIosTab = new FormControl(0);
 
   loadingTime = 0;
   expLoadingTime = 9; // seconds
@@ -60,6 +61,11 @@ export class GetStartedComponent {
   ngOnInit() {
     const isChrome = /Chrome\//i.test(window.navigator.userAgent);
     this.selectedTab.setValue(isChrome ? 0 : 1);
+
+    if (!isChrome) {
+      const isIPhone = /iPhone/i.test(window.navigator.userAgent);
+      this.selectedMacosIosTab.setValue(isIPhone ? 1 : 0);
+    }
 
     this.loadUserPreferences();
   }

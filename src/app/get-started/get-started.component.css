@@ -38,6 +38,13 @@
   width: 720px;
 }
 
+#Safari-Settings-Extensions-png {
+  width: 820px;
+}
+
+#iPhone-Settings-Safari-Extensions-Negotiate-Ninja-png {
+  width: 520px;
+}
 
 .content {
   padding-left: 20%;
@@ -59,6 +66,14 @@
   .how-it-works-gif {
     width: 512px;
   }
+
+  #Safari-Settings-Extensions-png {
+    width: 600px;
+  }
+
+  #iPhone-Settings-Safari-Extensions-Negotiate-Ninja-png {
+    width: 412px;
+  }
 }
 
 @media (max-width: 499px) {
@@ -68,6 +83,14 @@
   }
 
   .how-it-works-gif {
+    width: 100%;
+  }
+
+  #Safari-Settings-Extensions-png {
+    width: 100%;
+  }
+
+  #iPhone-Settings-Safari-Extensions-Negotiate-Ninja-png {
     width: 100%;
   }
 }
