@@ -90,6 +90,7 @@ export class SandboxMarktplaatsNlComponent {
             localTime: t[1],
             text: sendContent?.innerText || "",
           });
+          sendContent && (sendContent.innerHTML = "");
         }
       });
     },
