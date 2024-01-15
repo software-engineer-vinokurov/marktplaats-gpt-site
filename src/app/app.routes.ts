@@ -10,6 +10,8 @@ import { AboutComponent } from './about/about.component';
 import { AdminComponent } from './admin/admin.component';
 import { GetStartedComponent } from './get-started/get-started.component';
 import { AuthCallbackComponent } from './auth-callback/auth-callback.component';
+import { SandboxComponent } from './sandbox/sandbox.component';
+import { SandboxMarktplaatsNlComponent } from './sandbox/sandbox-marktplaats.nl/sandbox-marktplaats.nl.component';
 
 export const routes: Routes = [
   {
@@ -76,6 +78,24 @@ export const routes: Routes = [
     path: 'extension/logout',
     component: ExtensionLoginComponent,
     title: 'Negotiate Ninja. Extension Logout',
+  },
+  {
+    path: 'sandbox',
+    component: SandboxComponent,
+    title: 'Negotiate Ninja. Sandbox',
+    canActivate: [authGuardFn],
+    children: [
+      {
+        path: 'marktplaats-nl/:intention',
+        title: 'Negotiate Ninja. Sandbox for marktplaats.nl',
+        component: SandboxMarktplaatsNlComponent,
+      },
+      {
+        path: 'marktplaats-nl',
+        redirectTo: 'marktplaats-nl/selling',
+        pathMatch: 'full',
+      },
+    ],
   },
   {
     path: 'admin',

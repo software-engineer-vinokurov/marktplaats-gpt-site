@@ -1,0 +1,24 @@
+<mat-drawer-container class="example-container" autosize>
+  <mat-drawer #drawer class="example-sidenav" [mode]="mobileQuery.matches ? 'over' : 'side'">
+    <button class="my-sidenav-section" mat-button [routerLink]="['marktplaats-nl/']">marktplaats.nl</button>
+    <mat-divider></mat-divider>
+    <button class="my-sidenav-subsection" mat-button [routerLink]="['marktplaats-nl/selling']">selling</button>
+    <mat-divider></mat-divider>
+    <button class="my-sidenav-subsection" mat-button [routerLink]="['marktplaats-nl/buying']">buying</button>
+    <mat-divider></mat-divider>
+  </mat-drawer>
+
+  <div class="example-sidenav-content">
+    <router-outlet></router-outlet>
+
+  </div>
+
+</mat-drawer-container>
+
+<button class="sidenav-toggle-button" type="button" color="default" mat-stroked-button (click)="drawer.toggle()">
+  @if (drawer.opened) {
+  Close side navigation
+  } @else {
+  Open side navigation
+  }
+</button>

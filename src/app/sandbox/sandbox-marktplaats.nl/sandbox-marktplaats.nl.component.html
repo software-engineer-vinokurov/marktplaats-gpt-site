@@ -1,0 +1,193 @@
+@if (data) {
+<div data-sem="conversationMessages" data-sem-qualifier="12abc:456def:789ji" class="zLfNjrEiy_0j6ll4l49g">
+  <header>
+    <div class="ConversationTopic-module-root">
+      <div class="ConversationTopic-module-titleUnit">
+        <div class="ConversationTopic-module-title">
+          <a href="{{ data.opponentLink }}">
+            <h5 class="hz-Title hz-Title--title5 ConversationTopic-module-name" data-sem="otherParticipant">
+              {{ data.opponentName }}</h5>
+          </a>
+        </div>
+      </div>
+      <div>
+        <a class="AdvertisementSnippet-module-root" href="{{ data.product.link }}" data-sem="advertisementDisplayAction"
+          data-sem-qualifier="m0123456789">
+          <div class="AdvertisementSnippet-module-innerContainer">
+            <div class="AdvertisementSnippet-module-thumbnailUnit">
+              <div class="hz-UtilsBlock u-backgroundColorBackgroundLight EApbHMW4p6hBDBy7ifw9 LPipZ_svZFkgPAJ9vKuA">
+                <div
+                  class="hz-UtilsBlock u-borderRadiusStandard kzzJZQi3G2kBUCvtWWtA Mi94Kn8yp7VdX8QXzj8A LPipZ_svZFkgPAJ9vKuA"
+                  style="{{ data.thumbnailStyle }}">
+                </div>
+              </div>
+            </div>
+            <div class="AdvertisementSnippet-module-leftTextUnit">
+              <div class="hz-Text hz-Text--bodyLarge AdvertisementSnippet-module-title">{{ data.product.name }}
+              </div>
+              <div class="AdvertisementSnippet-module-secondaryInfo">
+                <div class="AdvertisementSnippet-module-price"><strong
+                    class="hz-Text hz-Text--bodyLarge"><span><span>€&nbsp;{{ data.product.price
+                        }}</span></span></strong>
+                </div>
+                <div class="AdvertisementSnippet-module-itemId"><strong
+                    class="hz-Text hz-Text--bodyRegular">Advertentienummer: m0123456789</strong></div>
+                <div class="hz-Text hz-Text--bodyRegular u-colorTextSecondary AdvertisementSnippet-module-locationInfo">
+                  {{ data.product.location }}</div>
+              </div>
+            </div><span class="AdvertisementSnippet-module-rightTextUnit"><i
+                class="hz-Icon hz-Icon--xl hz-Icon--textTertiary hz-SvgIcon hz-SvgIconArrowRight" aria-hidden="true"
+                data-sem="Icon"></i></span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </header>
+  <article>
+    <div class="Messages-module-root" data-sem="messages" data-sem-qualifier="12abc:456def:789ji">
+      <div class="ChatBanner-module-root">
+        <div class="ChatBanner-module-banner">
+          <div class="ChatBanner-module-header"><span class="hz-Text hz-Text--bodyLarge">Veilig handelen op Marktplaats
+            </span></div>
+          <div class="ChatBanner-module-body"><i class="hz-Icon hz-Icon--m hz-SvgIcon hz-SvgIconVeiligHandelen"
+              aria-hidden="true" data-sem="Icon"></i><span class="ChatBanner-module-bodyText"><span
+                class="hz-Text hz-Text--bodyRegular">Je hebt het artikel aangeboden
+                met Kopersbescherming</span></span></div>
+          <div class="ChatBanner-module-legalTextWrapper"><span
+              class="hz-Text hz-Text--bodyMicro u-colorTextSecondary"><span>Voor je veiligheid en gebruikservaring kan
+                Marktplaats conversaties filteren en staken.&nbsp;</span><a class="hz-Link hz-Link--isolated"
+                target="_blank" rel="noopener noreferrer"
+                href="/sandbox/mocks/https://help.marktplaats.nl/s/article/gebruik-maken-van-mijn-berichten"><span>Lees
+                  meer</span><i class="hz-Icon hz-Icon--s hz-Icon--signalLinkDefault hz-SvgIcon hz-SvgIconAngleRight"
+                  aria-hidden="true" data-sem="Icon"></i></a></span></div>
+        </div>
+      </div>
+      <div class="Messages-module-group">
+        <!-- <h3 class="DateHeading-module-root"><span>Gisteren</span></h3> -->
+        <ol class="Messages-module-listRoot">
+          @for (message of messages; track message) {
+          <li class="Messages-module-listItem Messages-module-listItem_from_{{message.author | lowercase }}">
+            <div>
+              <div class=" MessageCard-module-wrapperCard">
+                @if (message.author == "otherParticipant") {
+                <div
+                  class="MessageCard-module-root MessageCard-module-root_from_{{message.author | lowercase }} MessageCard-module-tail"
+                  data-sem="message" data-sem-qualifier="otherParticipant-2024-01-12T10:38:40Z">
+                  <div class="MessageCard-module-body"><span class="Linkify">{{message.text}}</span></div>
+                </div>
+                }
+                @if (message.author == "me") {
+                <div
+                  class="MessageCard-module-root MessageCard-module-root_from_{{message.author | lowercase }} MessageCard-module-tail"
+                  data-sem="message" data-sem-qualifier="me-2024-01-12T10:39:02Z">
+                  <div class="MessageCard-module-body"><span class="Linkify">{{message.text}}</span></div>
+                </div>
+                }
+                <div class="MessageCard-module-meta ">
+                  <span class="hz-Text hz-Text--bodySmall u-colorTextSecondary">{{
+                    message.localTime}}
+                  </span>
+                  @if (message.testStatus) {
+                  <span class="MessageReadStatus-module-root" title="{{message.testStatus}}">
+                    <span class="hz-Text hz-Text--bodySmall u-colorTextSecondary MessageReadStatus-module-textStatus">
+                      {{message.testStatus}}
+                    </span>
+                    <!-- <span class="MessageReadStatus-module-iconWrapper">
+                      <i class="hz-Icon hz-Icon--s hz-Icon--signalActionDefault hz-SvgIcon hz-SvgIconMessageRead"
+                        aria-hidden="true" data-sem="Icon"></i>
+                    </span> -->
+                  </span>
+                  }
+                </div>
+              </div>
+            </div>
+          </li>
+          }
+          <!-- <li class="Messages-module-listItem Messages-module-listItem_from_otherparticipant">
+            <div>
+              <div class=" MessageCard-module-wrapperCard">
+                <div
+                  class="MessageCard-module-root MessageCard-module-root_from_otherparticipant MessageCard-module-tail"
+                  data-sem="message" data-sem-qualifier="otherParticipant-2024-01-12T10:38:40Z">
+                  <div class="MessageCard-module-body"><span class="Linkify">Beste {{ myName }},
+
+                      Ik heb een vraag over '{{ product.name }}'.
+
+
+                      Met vriendelijke groet,
+                      {{ opponentName }}</span></div>
+                </div>
+                <div class="MessageCard-module-meta "><span
+                    class="hz-Text hz-Text--bodySmall u-colorTextSecondary">11:38</span>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="Messages-module-listItem Messages-module-listItem_from_me">
+            <div>
+              <div class=" MessageCard-module-wrapperCard">
+                <div class="MessageCard-module-root MessageCard-module-root_from_me MessageCard-module-tail"
+                  data-sem="message" data-sem-qualifier="me-2024-01-12T10:39:02Z">
+                  <div class="MessageCard-module-body"><span class="Linkify">Yes</span></div>
+                </div>
+                <div class="MessageCard-module-meta MessageCard-module-endAligned"><span
+                    class="hz-Text hz-Text--bodySmall u-colorTextSecondary">11:39</span>
+                  <span class="MessageReadStatus-module-root" title="Gelezen"><span
+                      class="hz-Text hz-Text--bodySmall u-colorTextSecondary MessageReadStatus-module-textStatus">Gelezen</span>
+                    <span class="MessageReadStatus-module-iconWrapper">
+                      <i class="hz-Icon hz-Icon--s hz-Icon--signalActionDefault hz-SvgIcon hz-SvgIconMessageRead"
+                        aria-hidden="true" data-sem="Icon"></i>
+                    </span></span>
+                </div>
+              </div>
+            </div>
+          </li> -->
+        </ol>
+      </div>
+    </div>
+    <div class="cevEwkIPY8RvVK4trfZG"></div>
+    <!-- <div class="mgce-section" id="mgce-section-a">
+      <div class="mgce-interface"><button class="mgce-button"><span><img class="mgce-button-icon"
+              src="data:image/png;base64,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"
+              alt="Assistant icon"></span><span id="mgce-suggest-a-reply-button-text">Regenerate a Reply
+            Suggestion&nbsp;&nbsp;</span><span class="mgce-tooltip">By Negotiate Ninja browser extension</span></button>
+      </div>
+    </div> -->
+  </article>
+  <footer>
+    <div class="SmartSuggestions-module-root"></div>
+    <section class="MessageComposer-module-root">
+      <div>
+        <div id="sandbox-mock-send-content"
+          class="ContentEditable-module-composer ContentEditable-module-pad ContentEditable-module-placeholder"
+          contenteditable="true" spellcheck="true"
+          placeholder="Schrijf hier je bericht. Gebruik SHIFT + ENTER voor een nieuwe regel." data-sem="sendMessageText"
+          tabindex="0"></div>
+      </div>
+      <div class="MessageComposer-module-send MessageComposer-module-empty">
+        <!-- <div><button class="hz-Button hz-Button--primary" title="Sturen"><i
+              class="hz-Icon hz-Icon--xl hz-SvgIcon hz-SvgIconSend" aria-hidden="true" data-sem="Icon"></i></button>
+        </div> -->
+        <div id="sandbox-mock-send-button"
+          style="background-image: url('http://localhost:4200/assets/sandbox/marktplaats-send-button.png');">
+        </div>
+      </div>
+    </section>
+    <nav class="InlineComposerMenu-module-root"><button class="hz-Button hz-Button--tertiary hz-Button--small"
+        title="Deel foto's" data-action="SEND_IMAGE" data-sem="composeImageAction"><i
+          class="hz-Icon hz-SvgIcon hz-SvgIconImage" aria-hidden="true" data-sem="Icon"></i><span
+          class="InlineComposerMenuOption-module-label InlineComposerMenuOption-module-hidden">Deel
+          foto's</span></button><button class="hz-Button hz-Button--tertiary hz-Button--small" title="Deel adres"
+        data-action="SEND_ADDRESS" data-sem="composeAddressAction"><i class="hz-Icon hz-SvgIcon hz-SvgIconLocation"
+          aria-hidden="true" data-sem="Icon"></i><span
+          class="InlineComposerMenuOption-module-label InlineComposerMenuOption-module-hidden">Deel
+          adres</span></button>
+      <div class="InlineComposerMenu-module-paymentRequestWrapper"><button
+          class="hz-Button hz-Button--secondary hz-Button--small" title="Doe een voorstel"
+          data-action="SEND_PAYMENT_REQUEST" data-sem="composePaymentRequestAction"><i
+            class="hz-Icon hz-SvgIcon hz-SvgIconPayable" aria-hidden="true" data-sem="Icon"></i><span
+            class="InlineComposerMenuOption-module-label ">Doe een voorstel</span></button></div>
+    </nav>
+  </footer>
+</div>
+}
