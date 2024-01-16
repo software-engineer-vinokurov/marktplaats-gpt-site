@@ -61,6 +61,7 @@ export class SandboxMarktplaatsNlComponent {
       var script = document.createElement('script');
       script.textContent = `var XXXX={"fu": "bar","loggedInUser":{"id":${this.data!.myUserId},"name":"${this.data!.myName}"},"experimentData":{}};`
       document.body.appendChild(script);
+      console.log("Injected marktplaats loggedInUser mock");
     });
   }
 

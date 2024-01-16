@@ -4,6 +4,11 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDrawer, MatSidenavModule } from '@angular/material/sidenav';
 import { MatDividerModule } from '@angular/material/divider';
 import { MediaMatcher } from '@angular/cdk/layout';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { connect } from '../../messaging';
+import { FormsModule } from '@angular/forms';
+import { environment } from '../../environments/environment';
+import { environment as devEnvironment } from '../../environments/environment.development';
 
 @Component({
   selector: 'app-sandbox',
@@ -13,13 +18,20 @@ import { MediaMatcher } from '@angular/cdk/layout';
     RouterModule,
     MatSidenavModule,
     MatButtonModule,
-    MatDividerModule
+    MatDividerModule,
+    MatSlideToggleModule,
+    FormsModule,
   ],
   templateUrl: './sandbox.component.html',
   styleUrl: './sandbox.component.css'
 })
 export class SandboxComponent implements OnDestroy {
   mobileQuery: MediaQueryList;
+
+  port?: any;
+
+  isLoggingEnabled: boolean = false;
+  isLocalhostApiServerEnabled: boolean = false;
 
   private startX?: number;
   private endX?: number;
@@ -29,6 +41,16 @@ export class SandboxComponent implements OnDestroy {
   @ViewChild(MatDrawer) drawer!: MatDrawer;
 
   constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher) {
+    try {
+      // NOTE: Comm to extension works well in Chrome but in Safari only when normally installed bext (and m.b. not from localhost), see https://github.com/software-engineer-vinokurov/negotiate-ninja-browser-extension/issues/10
+      this.port = connect();
+      this.port?.onMessage.addListener((m: any) => {
+        console.log("In port, received message from extension background script: ", m);
+      });
+    } catch (error) {
+      console.log("Communication to extension background script failed:", error);
+    }
+
     this.mobileQuery = media.matchMedia('(max-width: 700px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
@@ -58,7 +80,7 @@ export class SandboxComponent implements OnDestroy {
 
   handleSwipe() {
     // Check if the swipe is to the right
-    if (this.startX && this.endX && this.endX > this.startX) {
+    if (this.startX && this.endX && this.endX > (this.startX + 10)) {
       // Swipe to the right
       this.onRightSwipe();
     }
@@ -68,4 +90,20 @@ export class SandboxComponent implements OnDestroy {
     // Your function to be called on right swipe
     this.drawer.toggle();
   }
+
+  onLoggingChange() {
+    this.port?.postMessage({
+      task: 'enable-logging',
+      enabled: this.isLoggingEnabled,
+    });
+  }
+
+  onSetLocalhostApiServer() {
+    this.port?.postMessage({
+      task: 'use-api-server',
+      url: this.isLocalhostApiServerEnabled ? devEnvironment.apiServer : environment.apiServer,
+    });
+  }
+
+
 }

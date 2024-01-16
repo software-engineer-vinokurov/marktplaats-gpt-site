@@ -51,6 +51,10 @@ export class AppComponent {
     return user.sub === environment.auth0_admin_user_id;
   }
 
+  isTester(user: User) {
+    return user.email?.endsWith("@aleksandr.vin");
+  }
+
   commToExtension(access_token: string) {
     const message = {
       task: 'store-access-token',

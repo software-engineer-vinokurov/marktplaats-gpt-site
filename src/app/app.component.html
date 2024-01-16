@@ -14,6 +14,12 @@
           <span>Admin</span>
         </button>
         }
+        @if (isTester(user)) {
+        <button mat-menu-item aria-label="admin button" [routerLink]="['/sandbox']">
+          <mat-icon>developer_board</mat-icon>
+          <span>Sandbox</span>
+        </button>
+        }
       </div>
       <button mat-menu-item aria-label="get started button" [routerLink]="['/get-started']">
         <mat-icon>start</mat-icon>

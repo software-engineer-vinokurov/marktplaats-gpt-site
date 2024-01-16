@@ -7,6 +7,14 @@
     <mat-divider></mat-divider>
     <button class="my-sidenav-subsection" mat-button [routerLink]="['marktplaats-nl/buying']">buying</button>
     <mat-divider></mat-divider>
+    <mat-divider></mat-divider>
+    <mat-divider></mat-divider>
+    <mat-slide-toggle [(ngModel)]="isLoggingEnabled" (change)="onLoggingChange()"><span
+        class="mat-small">Logging</span></mat-slide-toggle>
+    <mat-divider></mat-divider>
+    <mat-slide-toggle [(ngModel)]="isLocalhostApiServerEnabled" (change)="onSetLocalhostApiServer()"><span
+        class="mat-small">Dev
+        server</span></mat-slide-toggle>
   </mat-drawer>
 
   <div class="example-sidenav-content">
