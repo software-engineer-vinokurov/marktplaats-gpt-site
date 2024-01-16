@@ -12,7 +12,7 @@ import { AuthService, GenericError, User } from '@auth0/auth0-angular';
 import { filter, map } from 'rxjs';
 import { environment } from '../environments/environment';
 import { FooterComponent } from './footer/footer.component';
-import { sendMessageExt, connect } from '../messaging'
+import { connect } from '../messaging'
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 
@@ -56,19 +56,15 @@ export class AppComponent {
       task: 'store-access-token',
       access_token: access_token,
     };
-    // FIXME: Trying to send access-token to extension (works in Chrome but not in Safari), see https://github.com/software-engineer-vinokurov/negotiate-ninja-browser-extension/issues/10
+    // NOTE: Comm to extension works well in Chrome but in Safari only when normally installed bext (and m.b. not from localhost), see https://github.com/software-engineer-vinokurov/negotiate-ninja-browser-extension/issues/10
     try {
       let port = connect();
       port?.onMessage.addListener((m: any) => {
-        console.log("In port, received message from extension background script: ", m);
+        // console.log("In port, received message from extension background script: ", m);
       });
       port?.postMessage(message);
-      // And attempt via sendMessage:
-      sendMessageExt(message).then((response: any) => {
-        console.log("Received response for 'store-access-token' task from the extension background script:", response);
-      });
     } catch (error) {
-      console.log("Communication to extension background script failed:", error);
+      // console.log("Communication to extension background script failed:", error);
     }
   }
 
