@@ -121,7 +121,7 @@ export class SandboxMarktplaatsNlComponent {
           link: "/assets/sandbox/mocks/marktplaats/i-am-buying.html?orig=https://link.marktplaats.nl/m0123456789",
         },
         opponentName: "Gordon",
-        myName: "Barney",
+        myName: "Bob",
         myUserId: "87654321",
         opponentLink: "/assets/sandbox/mocks/marktplaats/u/43211234.html?origin=https://www.marktplaats.nl/verkopers/12345678.html",
         thumbnailStyle: `background-image: url(/assets/sandbox/mocks/marktplaats-buy-thumbnail-mock.png#https://images.marktplaats.com/api/v1/listing-mp-p/images/a1/45364B02-E9B0-4697-87B2-00497C5B6FD8?rule=ecg_mp_eps$_82.jpg); `,
@@ -180,7 +180,7 @@ export class SandboxMarktplaatsNlComponent {
             Is it still for sale?
       
             With best regards,
-            ${data.opponentName}`,
+            ${data.myName}`,
           testStatus: "Gelezen",
         },
         {
