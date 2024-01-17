@@ -40,7 +40,7 @@ export class SandboxComponent implements OnDestroy {
 
   @ViewChild(MatDrawer) drawer!: MatDrawer;
 
-  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher) {
+  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher,) {
     try {
       // NOTE: Comm to extension works well in Chrome but in Safari only when normally installed bext (and m.b. not from localhost), see https://github.com/software-engineer-vinokurov/negotiate-ninja-browser-extension/issues/10
       this.port = connect();
@@ -54,6 +54,14 @@ export class SandboxComponent implements OnDestroy {
     this.mobileQuery = media.matchMedia('(max-width: 700px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
+  }
+
+  ngOnInit() {
+    if (window.location.pathname === "/sandbox") {
+      setTimeout(() => {
+        this.drawer.open();
+      }, 1000);
+    }
   }
 
   ngAfterViewInit(): void {
