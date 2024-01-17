@@ -76,26 +76,23 @@ export class SandboxMarktplaatsNlComponent {
           event.preventDefault();
         });
       });
-
-      const messagesRef = this.messages;
-      const sendContent = document.getElementById('sandbox-mock-send-content');
-      const sendButton = document.getElementById('sandbox-mock-send-button');
-      sendButton?.addEventListener('click', function (event) {
-        console.log(">", sendButton.innerText)
-        if (sendContent?.innerText !== "") {
-          const now = new Date();
-          const t = makeTimes(now);
-          messagesRef?.push({
-            author: "me",
-            dataSemQualifier: `me-${t[0]}`,
-            localTime: t[1],
-            text: sendContent?.innerText || "",
-          });
-          sendContent && (sendContent.innerHTML = "");
-        }
-      });
     },
       100);
+  }
+
+  onSend() {
+    const sendContent = document.getElementById('sandbox-mock-send-content');
+    if (sendContent?.innerText !== "") {
+      const now = new Date();
+      const t = makeTimes(now);
+      this.messages?.push({
+        author: "me",
+        dataSemQualifier: `me-${t[0]}`,
+        localTime: t[1],
+        text: sendContent?.innerText || "",
+      });
+      sendContent && (sendContent.innerHTML = "");
+    }
   }
 
   loadDataFor(intention: Intention): MarktplaatsConversationPageData | undefined {
