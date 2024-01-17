@@ -1,8 +1,8 @@
 <mat-drawer-container class="example-container" autosize (touchstart)="onTouchStart($event)"
   (touchend)="onTouchEnd($event)">
   <mat-drawer #drawer class="example-sidenav" [mode]="mobileQuery.matches ? 'over' : 'side'">
-    <button class="my-sidenav-section" mat-button [routerLink]="['marktplaats-nl/']">marktplaats.nl</button>
-    <mat-divider></mat-divider>
+    <!-- <button class="my-sidenav-section" mat-button [routerLink]="['marktplaats-nl/']">marktplaats.nl</button>
+    <mat-divider></mat-divider> -->
     <button class="my-sidenav-subsection" mat-button [routerLink]="['marktplaats-nl/selling']">selling</button>
     <mat-divider></mat-divider>
     <button class="my-sidenav-subsection" mat-button [routerLink]="['marktplaats-nl/buying']">buying</button>
