@@ -45,10 +45,10 @@ export class SandboxComponent implements OnDestroy {
       // NOTE: Comm to extension works well in Chrome but in Safari only when normally installed bext (and m.b. not from localhost), see https://github.com/software-engineer-vinokurov/negotiate-ninja-browser-extension/issues/10
       this.port = connect();
       this.port?.onMessage.addListener((m: any) => {
-        console.log("In port, received message from extension background script: ", m);
+        console.log("[sandbox] In port, received message from extension background script: ", m);
       });
     } catch (error) {
-      console.log("Communication to extension background script failed:", error);
+      console.log("[sandbox] Communication to extension background script failed:", error);
     }
 
     this.mobileQuery = media.matchMedia('(max-width: 700px)');

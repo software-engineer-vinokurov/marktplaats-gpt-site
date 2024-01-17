@@ -43,7 +43,11 @@ export class AppComponent {
     private snackBar: MatSnackBar,
   ) {
     auth.isAuthenticated$.subscribe(v => {
-      auth.getAccessTokenSilently().subscribe(this.commToExtension);
+      auth.user$.subscribe(user => {
+        auth.getAccessTokenSilently().subscribe(access_token => {
+          this.commToExtension(access_token, user);
+        });
+      });
     });
   }
 
@@ -55,18 +59,25 @@ export class AppComponent {
     return user.email?.endsWith("@aleksandr.vin");
   }
 
-  commToExtension(access_token: string) {
-    const message = {
-      task: 'store-access-token',
-      access_token: access_token,
-    };
+  commToExtension(
+    access_token: string,
+    user?: User | null) {
     // NOTE: Comm to extension works well in Chrome but in Safari only when normally installed bext (and m.b. not from localhost), see https://github.com/software-engineer-vinokurov/negotiate-ninja-browser-extension/issues/10
     try {
       let port = connect();
       port?.onMessage.addListener((m: any) => {
-        // console.log("In port, received message from extension background script: ", m);
+        // console.log("In port, received message from extension background script:", m);
       });
-      port?.postMessage(message);
+      port?.postMessage({
+        task: 'store-access-token',
+        access_token: access_token,
+      });
+      if (user) {
+        port?.postMessage({
+          task: 'store-user',
+          user: user,
+        });
+      }
     } catch (error) {
       // console.log("Communication to extension background script failed:", error);
     }
