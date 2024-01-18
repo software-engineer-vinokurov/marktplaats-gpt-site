@@ -1,0 +1,17 @@
+<mat-progress-bar mode="query" *ngIf="downloading"></mat-progress-bar>
+<mat-progress-bar mode="indeterminate" *ngIf="uploading"></mat-progress-bar>
+
+<div class="content">
+  <h1 class="mat-headline-4">Account</h1>
+
+  <h1>Delete Account</h1>
+
+  <form class="delete-account-form">
+    <mat-form-field class="delete-account-full-width">
+      <mat-label>Email for confirmation</mat-label>
+      <input matInput placeholder="Ex. bob@sil.ent" [(ngModel)]="accountEmail" [ngModelOptions]="{standalone: true}">
+    </mat-form-field>
+  </form>
+
+  <button mat-button color="warn" (click)="onDeleteAccount()">DELETE ACCOUNT</button>
+</div>

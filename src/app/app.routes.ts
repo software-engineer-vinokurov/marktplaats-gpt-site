@@ -12,6 +12,7 @@ import { GetStartedComponent } from './get-started/get-started.component';
 import { AuthCallbackComponent } from './auth-callback/auth-callback.component';
 import { SandboxComponent } from './sandbox/sandbox.component';
 import { SandboxMarktplaatsNlComponent } from './sandbox/sandbox-marktplaats.nl/sandbox-marktplaats.nl.component';
+import { AccountComponent } from './account/account.component';
 
 export const routes: Routes = [
   {
@@ -101,6 +102,12 @@ export const routes: Routes = [
     path: 'admin',
     component: AdminComponent,
     title: 'Negotiate Ninja. Admin',
+    canActivate: [authGuardFn],
+  },
+  {
+    path: 'account',
+    component: AccountComponent,
+    title: 'Negotiate Ninja. Account',
     canActivate: [authGuardFn],
   },
 ];
