@@ -119,6 +119,11 @@ export class AppComponent {
   }
 
   onLogin(): void {
+    // send GA event, see https://developers.google.com/analytics/devguides/collection/ga4/reference/events?client_type=gtag#login
+    (<any>window).gtag('event', 'login', {
+      method: "toolbar",
+    });
+
     // Call this to redirect the user to the login page
     this.auth.loginWithPopup({
       authorizationParams: {
@@ -128,13 +133,18 @@ export class AppComponent {
   }
 
   onSignup(): void {
+    // send GA event, see https://developers.google.com/analytics/devguides/collection/ga4/reference/events?client_type=gtag#sign_up
+    (<any>window).gtag('event', 'sign_up', {
+      method: "toolbar",
+    });
+
     // Call this to redirect the user to the login page
     this.auth.loginWithRedirect({
       authorizationParams: {
         screen_hint: 'signup',
       },
       appState: {
-        target: '/get-started',
+        target: '/get-started/new-user',
       }
     });
   }

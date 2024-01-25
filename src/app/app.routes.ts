@@ -54,6 +54,12 @@ export const routes: Routes = [
     canActivate: [authGuardFn],
   },
   {
+    path: 'get-started/new-user',
+    component: GetStartedComponent,
+    title: 'Get Started with Negotiate Ninja',
+    canActivate: [authGuardFn],
+  },
+  {
     path: 'get-started',
     component: GetStartedComponent,
     title: 'Get Started with Negotiate Ninja',

@@ -8,7 +8,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { SubscribeFormComponent, SuggestionsService, TosDialog } from 'negotiate-ninja-lib';
 import { MatButtonModule } from '@angular/material/button';
-import { RouterModule } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatIconModule } from '@angular/material/icon';
@@ -55,7 +55,25 @@ export class GetStartedComponent {
 
   @ViewChild('loadingLogoRef', { static: false }) loadingLogoRef!: ElementRef;
 
-  constructor(private suggestionsService: SuggestionsService, private snackBar: MatSnackBar, private _formBuilder: FormBuilder, public dialog: MatDialog) { }
+  constructor(
+    private suggestionsService: SuggestionsService,
+    private snackBar: MatSnackBar,
+    private _formBuilder: FormBuilder,
+    public dialog: MatDialog,
+    private route: ActivatedRoute,
+  ) {
+
+    this.route.url.subscribe(url => {
+      // The URL is an array of segments, join them to get a string
+      const currentRoute = url.map(segment => segment.path).join('/');
+      if (currentRoute === "get-started/new-user") {
+        // send GA event, see https://developers.google.com/analytics/devguides/collection/ga4/reference/events?client_type=gtag#sign_up
+        (<any>window).gtag('event', 'complete_sign_up', {
+          method: "web"
+        });
+      }
+    });
+  }
 
   formGroup = this._formBuilder.group({
     acceptTerms: [false, Validators.requiredTrue],
