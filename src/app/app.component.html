@@ -1,7 +1,7 @@
 <mat-toolbar>
   <mat-menu #menu="matMenu">
     <div *ngIf="!(auth.isAuthenticated$ | async)">
-      <button mat-menu-item aria-label="log-in button" (click)="onLogin()">
+      <button mat-menu-item class="login-button" aria-label="log-in button" (click)="onLogin()">
         <mat-icon>login</mat-icon>
         <span>Log-in</span>
       </button>
@@ -52,7 +52,7 @@
     </button>
     <div *ngIf=" (auth.isAuthenticated$ | async)">
       <mat-divider></mat-divider>
-      <button mat-menu-item aria-label="log-out button" (click)="onLogout()">
+      <button mat-menu-item class="logout-button" aria-label="log-out button" (click)="onLogout()">
         <mat-icon>logout</mat-icon>
         <span>Log-out</span>
       </button>
@@ -64,13 +64,14 @@
   <span class="toolbar-spacer"></span>
   <div *ngIf="!(auth.isAuthenticated$ | async)">
     <div *ngIf="showSignup">
-      <button mat-fab extended aria-label="icon-button with login icon" (click)="onSignup()">
+      <button mat-fab extended class="signup-button" aria-label="icon-button with login icon" (click)="onSignup()">
         <mat-icon>check</mat-icon>
         Sign-up
       </button>
     </div>
     <div *ngIf="showLogin">
-      <button mat-fab extended aria-label="icon-button with login icon" color="primary" (click)="onLogin()">
+      <button mat-fab extended class="login-button" aria-label="icon-button with login icon" color="primary"
+        (click)="onLogin()">
         <mat-icon>login</mat-icon>
         Log-in
       </button>

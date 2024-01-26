@@ -69,11 +69,6 @@ export class LandingPageComponent {
   }
 
   onSignup() {
-    // send GA event, see https://developers.google.com/analytics/devguides/collection/ga4/reference/events?client_type=gtag#sign_up
-    (<any>window).gtag('event', 'sign_up', {
-      method: "landing-page",
-    });
-
     this.auth.loginWithRedirect({
       authorizationParams: {
         screen_hint: 'signup',
